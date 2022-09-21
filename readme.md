@@ -87,8 +87,39 @@ git reset id // id 是提交的唯一id
 git remote rename origin NewName
 // 查询远程仓库地址
 git remote -v
+git remote -vv // 会显示更加详细的地址
 // 修改远程仓库的地址
 git remote set-url origin url
 // 删除关联的远程项目
 git remote rm origin
+```
+
+#### 分支操作
+```cmd
+// 删除一个远程分支
+git push origin --delete master
+```
+#### 变基，当前分支的所有修改移到另一个分支上面
+```cmd
+git checkout maser
+// 变基到master分支
+git rebase main
+// 切回主分支
+git checkout main
+// 然后进行合并
+git merge maser
+
+```
+
+#### 标签
+```cmd
+git tag
+git tag -l 
+git tag -list
+// 创建标签 ， （lightweight，annotated）
+// 创建带注释的标签（annotated）
+git tag -a test -m "test标签"
+// 创建轻量的标签
+git tag pushTag
+
 ```
