@@ -98,6 +98,8 @@ git remote rm origin
 ```cmd
 // 删除一个远程分支
 git push origin --delete master
+// 删除一个本地分支
+git branch -d main
 ```
 #### 变基，当前分支的所有修改移到另一个分支上面
 ```cmd
