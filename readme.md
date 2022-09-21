@@ -26,8 +26,6 @@ git init
 
 // 获取远程项目
 git remote add origin url
-// 删除关联的远程项目
-git remote rm origin
 
 // 删除项目
 git remote rm origin 
@@ -48,16 +46,49 @@ git checkout name
 // 创建并切换分支
 git checkout -b name
 
+// 合并分支
+git merge name
+
 // 查看本地与远程的分支
 git branch -a
 git branch -v
 
 // 上传到服务器
 git push -u origin master // master 可以改为其他分支
+git push origin master -f // 强制合并线上分支
 
 // 从远程地址拉取并更新分支
 git poll origin master // master 可以改为其他分支
 
+// 日志
+git log
+git log -p -2  // 查看最后两次的更新日志
+git log --stat // 查询更新统计
+//git log --pretty 使用不同的格式输出日志
+git log --pretty=oneline // 每个提交都放在一行显示
 
 
+```
+#### 撤销最近的本地缓存区
+```cmd
+// 比如说提交完了之后发现漏了一个文件，此时就可以撤销提交
+git commit --amend
+```
+
+#### 撤销操作
+```cmd
+git reset --hard
+git reset id // id 是提交的唯一id
+```
+
+#### 远程仓库管理
+```cmd
+// 修改仓库名称
+git remote rename origin NewName
+// 查询远程仓库地址
+git remote -v
+// 修改远程仓库的地址
+git remote set-url origin url
+// 删除关联的远程项目
+git remote rm origin
 ```
