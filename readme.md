@@ -10,6 +10,8 @@
 git config --global user.name ""
 git config --global user.email ""
 git config --global http.sslVerify "false" // 关闭ssl认证
+// cat config
+git config --list
 // proxy 代理
 git config --global https.proxy
 // 取消代理
@@ -69,6 +71,16 @@ git log --pretty=oneline // 每个提交都放在一行显示
 
 
 ```
+
+#### 克隆一个项目
+```cmd
+git clone url
+// 克隆指定版本的库
+git clone -b url
+// 深度克隆，两同包含的项目一起下载
+git clone --recursive url
+```
+
 #### 更新分支的坑
 ```cmd
 // 修改完文件需要更新到服务器时，首先把本地的变化连接到服务器
