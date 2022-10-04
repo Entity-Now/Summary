@@ -1,6 +1,6 @@
 <!--
  * @作者: 14770137
- * @Date: 2022-09-25 15:27:18
+ * @Date: 2022-09-26 21:58:35
 -->
 # canvas
 ```js
@@ -65,7 +65,9 @@ d2d.fillRect(y,x,width,height);
     ctx.stroke();
 ```
 #### 使用线条画正方形
-```js
+```js            
+    // 设置描边颜色
+    ctx.strokeStyle = 'blue';
     ctx.beginPath();
     ctx.moveTo(20,10);
     ctx.lineTo(20,100);
@@ -223,6 +225,179 @@ d2d.fillRect(y,x,width,height);
     ctx.strokeText(test.width,10,50);
 ```
 
+#### 图片渲染
+```js
+    // image
+    var img = new Image();
+    img.src = '/src/logo.jpg';
+    img.onload = function(){
+        // 绘制图片,drawImage(image,x,y,width,height);
+        ctx.drawImage(img,0,0,300,300);
+
+    }
+```
+
+#### save 与 restore
+```js
+    // save 保存当前状态（style,alpha,width,cap,join,miterLimit,shadow,color,blur,cont,textAlign,baseLine,direction等等等）
+    // store 恢复保存的状态
+    ctx.strokeStyle = "red";
+    // 保存的状态
+    ctx.save();
+    ctx.strokeRect(10,10,50,50);
+    ctx.strokeStyle = 'pink';
+    ctx.strokeRect(10,70,50,50);
+    // 把保存的状态恢复
+    ctx.restore();
+    ctx.strokeRect(70,10,50,50);
+```
+
+#### translate 移动
+```js
+ctx.fillStyle = 'red';
+// translate 移动
+ctx.translate(10,10);
+// fillRect 的值可以不用设置
+ctx.fillRect(0,0,50,50);
+```
+
+#### rotate 旋转
+```js
+    ctx.strokeStyle = 'red';
+    ctx.fillStyle = 'pink';
+    ctx.font="20px Georgia";
+    ctx.fillText(`弧度:${65 * Math.PI / 180}`,10,100);
+    // rotate 先移动，旋转
+    // ctx.translate(125,125);
+    ctx.rotate(15 * Math.PI / 180);
+    // translate 移动
+    ctx.translate(10,10);
+    // fillRect 的值可以不用设置
+    ctx.shadowBlur = 5;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+    ctx.shadowColor = 'red';
+    ctx.rect(0,0,50,50);
+    ctx.fill();
+```
+![rotate](/js/img/rotate.png)
+
+#### 缩放 scale
+```js
+    ctx.strokeStyle = 'red';
+    ctx.fillStyle = 'pink';
+    // scale 缩放(x,y)
+    ctx.scale(2.5,1.5);
+    // 原始大小50x50
+    ctx.rect(10,10,50,50);
+    ctx.fill();
+```
+![scale](/js/img/scale.png)
+
 #### 
 ```js
 ```
+
+#### 
+```js
+```
+
+#### 
+```js
+```
+
+#### 
+```js
+```
+
+#### 签名工具
+```js
+    /** @type {HTMLCanvasElement}*/
+    var canvas = document.getElementById("dom");
+    var ctx = canvas.getContext("2d");
+    ctx.lineWidth = 10;
+
+    var IsClick = false;
+    var startLineY = 0,startLineX = 0;
+    canvas.addEventListener('mousedown',function(event){
+        // 启动
+        IsClick = true;
+        startLineY = event.offsetY;
+        startLineX = event.offsetX;
+    });
+    canvas.addEventListener('mouseup',function(event){
+        // 关闭
+        IsClick = false;
+        startLineY = 0;
+        startLineX = 0;
+    });
+    canvas.addEventListener('mouseleave',function(){
+        // 关闭
+        IsClick = false;
+        startLineY = 0;
+        startLineX = 0;
+    });
+    canvas.addEventListener('mousemove',function(event){
+        // 绘制
+        if(IsClick){
+            // 画线
+            // ctx.beginPath();
+            // ctx.moveTo(startLineX,startLineY);
+            // ctx.lineTo(event.offsetX,event.offsetY);
+            // ctx.stroke();
+            /** 画圆圈 */
+            // ctx.beginPath();
+            // ctx.arc(event.offsetX,event.offsetY,5,0,Math.PI * 2,false);
+            // ctx.fill();
+            /** 画线 */
+            ctx.beginPath();
+            ctx.moveTo(event.offsetX,event.offsetY);
+            ctx.lineTo(event.offsetX+1,event.offsetY+1);
+            ctx.stroke();
+        }
+    });
+```
+![arc](/js/img/arc.png) ![line](/js/img/drawLine.png)
+
+#### 签名绘制2.0 
+```js
+    /** @type {HTMLCanvasElement}*/
+    var canvas = document.getElementById("dom");
+    var ctx = canvas.getContext("2d");
+
+    ctx.lineWidth = 10;
+
+    var IsClick = false;
+    var startLineY = 0,startLineX = 0;
+    canvas.addEventListener('mousedown',function(event){
+        // 启动
+        IsClick = true;
+        startLineY = event.offsetY;
+        startLineX = event.offsetX;
+        // path
+        ctx.beginPath();
+        ctx.moveTo(event.offsetX,event.offsetY);
+    });
+    canvas.addEventListener('mouseup',function(event){
+        // 关闭
+        IsClick = false;
+        startLineY = 0;
+        startLineX = 0;
+    });
+    canvas.addEventListener('mouseleave',function(){
+        // 关闭
+        IsClick = false;
+        startLineY = 0;
+        startLineX = 0;
+    });
+    canvas.addEventListener('mousemove',function(event){
+        // 绘制
+        if(IsClick){
+            /** 画线 */
+            ctx.lineTo(event.offsetX+1,event.offsetY+1);
+            // stroke
+            ctx.stroke();
+        }
+    });
+```
+![drawLine](/js/img/drawLine_2.png)
