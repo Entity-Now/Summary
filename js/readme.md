@@ -55,6 +55,38 @@
     obj.c = 9999;
     console.log(obj.c); // 9999
 ```
+```js
+    // object，定义getters setters
+    var obj = {
+        a : '123',
+        get getA(){
+            return this.a;
+        },
+        set SetA(val){
+            this.a = val;
+        }
+    }
+    // 定义属性
+    Object.defineProperty(obj,'auto',{
+        get:function(){return this.a;},
+        set:function(val){
+            this.a = val;
+        }
+    });
+    // output
+    console.log(obj.getA); // 123
+    obj.SetA = 'test1';
+    console.log(obj.getA); // test1
+    // 输出自定义属性
+    obj.auto = 'test2';
+    console.log(obj.auto); // test2
+```
+### 删除对象 delete
+```js
+ var a = {a : '123'};
+ delete a.a; // 删除对象的属性
+ delete a; // 删除对象
+```
 
 ### class 
 ```js
@@ -87,6 +119,33 @@
     console.log(new Obj3("456").GetName());
 ```
 
+### promise 
+```js
+    // resolve 表示成功
+    // reject 表示失败
+    let test = new Promise(function(resolve,reject){
+        if(false){
+            resolve("success");
+        }else{
+            reject("error");
+        }
+    });
+    test.then((val)=>{
+        alert(val);
+    }).catch(val=>{
+        alert(val);
+    });
+    // promise.resolve();
+    Promise.resolve();
+    // all 并行执行异步方法，且所有任务结束后才回调
+    // promise.all(function,arg).then(val=>{});
+    // output array()[] 
+
+    // race 异步执行任务，不会等待其他任务结束
+    // promise.race(function.arg).then(val=>{});
+    // output val
+```
+
 ## map weakMap
 ```js
     // map,键值可为对象
@@ -110,4 +169,50 @@
     test2.set(obj,'123');
     console.log(test2.get(obj));
     console.log(test2);
+```
+
+### set ,值不重复
+```js
+    // set 值的集合，这些值是不重复的 
+    var test = new Set();
+    test.add(1);
+    test.add("some text");
+
+    test.has(1); // true
+    test.delete(1);
+    console.log(test.size);
+```
+
+### 展开语法，数组操作
+```js
+    var test = new Set([1,2,3,4,5]);
+    // 数组和集合的转换
+    var data = Array.from(test);
+    console.log(data);
+
+    // [regex]，展开操作符
+    console.log([...data]);
+    console.log(['start',...data,'end']); // ['start', 1, 2, 3, 4, 5, 'end']
+    console.log(...data); // 1 2 3 4 5
+
+    // ... assign 数组拷贝，属于浅拷贝 
+    var a = [[1],[2],[3]];
+    console.log(...a); // [1] [2] [3]
+    var b = [];
+
+    // 数组拷贝
+    Object.assign(b,a)
+    console.log(b); // [array(1),array(2),array(3)]
+
+    // 链接数组
+    var arr1 = [0,1,2];
+    var arr2 = [3,4,5];
+    console.log(arr1.concat(arr2)); // [0, 1, 2, 3, 4, 5]
+
+    // 展开语法，会创建一个新数组
+    console.log(...arr1,...arr2); // 0 1 2 3 4 5
+
+    // unshift 修改原有的数组
+    arr1.unshift(...arr2);
+    console.log(arr1);  // [3, 4, 5, 0, 1, 2]
 ```
