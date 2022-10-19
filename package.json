@@ -29,7 +29,6 @@
   "homepage": "https://github.com/2966388213/Summary#readme",
   "devDependencies": {
     "@vuepress/plugin-docsearch": "^2.0.0-beta.51",
-    "@vuepress/plugin-search": "^2.0.0-beta.51",
     "vuepress": "^2.0.0-beta.51"
   }
 }
