@@ -1,0 +1,1 @@
+import{d as e,r as _,o as t,c as n,a as s,_ as o}from"./app.1fabcdfe.js";const l=s("hr",null,null,-1),a=[l],c=e({__name:"index.html",setup(r){return _(1234),(d,i)=>(t(),n("div",null,a))}});const u=o(c,[["__file","index.html.vue"]]);export{u as default};
