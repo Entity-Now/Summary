@@ -33,5 +33,5 @@ export default defineUserConfig({
 
         })
     ],
-    dest:'dest'
+    // dest:'dist'
 });
