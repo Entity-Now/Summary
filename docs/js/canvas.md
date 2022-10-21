@@ -50,7 +50,7 @@ d2d.fillRect(y,x,width,height);
         ctx.stroke();
     }
 ```
-![lineWidth](/js/img/lineWidth.png)
+![lineWidth](/image/img/lineWidth.png)
 #### 绘制圆圈
 ```js 
     // 清屏
@@ -94,7 +94,7 @@ d2d.fillRect(y,x,width,height);
         ctx.stroke();
     }
 ```
-![LineCap](/js/img/lineCap.png)
+![LineCap](/image/img/lineCap.png)
 
 #### line join
 ```js
@@ -115,7 +115,7 @@ d2d.fillRect(y,x,width,height);
         ctx.stroke();
     }
 ```
-![linejoin](/js/img/LineJoin.png)
+![linejoin](/image/img/LineJoin.png)
 
 #### 蚂蚁线动画，SetLineDash([线条稀疏度，线条间隙]),LineDashOffset = 起始点偏移量
 ```js
@@ -170,7 +170,7 @@ d2d.fillRect(y,x,width,height);
     ctx.rect(0,0,300,300);
     ctx.fill();
 ```
-![radialGradient](/js/img/radialGradient.png)
+![radialGradient](/image/img/radialGradient.png)
 
 #### 绘制图案，CreatePattern 
 ```js
@@ -184,7 +184,7 @@ d2d.fillRect(y,x,width,height);
         ctx.fillRect(0,0,300,300);
     }
 ```
-![pattern](/js/img/CreatePattern.png)
+![pattern](/image/img/CreatePattern.png)
 
 #### 阴影与字体 shadow fillText
 ```js
@@ -201,7 +201,7 @@ d2d.fillRect(y,x,width,height);
     // 绘制文字
     ctx.fillText('hello world',10,30);
 ```
-![fillText](/js/img/FillText.png)
+![fillText](/image/img/FillText.png)
 
 #### 字体
 ```js
@@ -217,7 +217,7 @@ d2d.fillRect(y,x,width,height);
     // 文本边框
     ctx.strokeText('你好，世界~',10,120,300);
 ```
-![fillText](/js/img/FillText2.png)
+![fillText](/image/img/FillText2.png)
 
 #### 测量文本宽度，measureText
 ```js 
@@ -280,7 +280,7 @@ ctx.fillRect(0,0,50,50);
     ctx.rect(0,0,50,50);
     ctx.fill();
 ```
-![rotate](/js/img/rotate.png)
+![rotate](/image/img/rotate.png)
 
 #### 缩放 scale
 ```js
@@ -292,7 +292,7 @@ ctx.fillRect(0,0,50,50);
     ctx.rect(10,10,50,50);
     ctx.fill();
 ```
-![scale](/js/img/scale.png)
+![scale](/image/img/scale.png)
 
 #### 
 ```js
@@ -357,7 +357,7 @@ ctx.fillRect(0,0,50,50);
         }
     });
 ```
-![arc](/js/img/arc.png) ![line](/js/img/drawLine.png)
+![arc](/image/img/arc.png) ![line](/image/img/drawLine.png)
 
 #### 签名绘制2.0 
 ```js
@@ -400,4 +400,4 @@ ctx.fillRect(0,0,50,50);
         }
     });
 ```
-![drawLine](/js/img/drawLine_2.png)
+![drawLine](/image/img/drawLine_2.png)

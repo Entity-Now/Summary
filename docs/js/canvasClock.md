@@ -3,7 +3,7 @@
  * @Date: 2022-09-30 15:20:21
 -->
 # 时钟动画
-![clock](/js/img/Clock.png)
+![clock](/image/img/Clock.png)
 ```js
     /** @type {HTMLCanvasElement}*/
     var canvas = document.getElementById("dom");
