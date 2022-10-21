@@ -13,19 +13,9 @@ export default defineUserConfig({
     head:[
         ['link',{rel:'icon',href:'/image/Logo.ico'}]
     ],
-    locales:{
-        "/":{
-            lang:'zh-CN'
-        }
-    },
     theme:defaultTheme({
         logo:'/image/MenuLogo.png',
-        repo:'https://github.com/2966388213/Summary',
-        locales:{
-            "/":{
-                selectLanguageName:'简体中文'
-            }
-        },
+        repo:'https://github.com/2966388213/Summary'
         
     }),
     plugins:[
