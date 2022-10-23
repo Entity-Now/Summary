@@ -19,16 +19,15 @@ jobs:
     steps: 
       # 引用的action , @v2是action的版本
       - uses: actions/checkout@v2
-      # 可以使用with对引用的action传入参数
-      with:
-        # fect-depth 取出所有标签和历史提交记录
-        fect-depth: 0
+        with: # 可以使用with对引用的action传入参数
+          # fect-depth 取出所有标签和历史提交记录
+          fect-depth: 0
 
       - name: Setup Node.js
         # nodejs
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: '16'
       # 构建项目
       - name: npm build
         run: npm insatll & npm run docs:build
@@ -43,4 +42,4 @@ jobs:
           # 部署目录为 vuepress.dist
           build_dir: docs/.vuepress/dist
         env:
-          GITHUB_TOKEN:${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
