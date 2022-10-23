@@ -30,7 +30,7 @@ jobs:
           node-version: '16'
       # 构建项目
       - name: npm build
-        run: npm insatll & npm run docs:build
+        run: npm install & npm run docs:build
       
       # 提交到仓库
       # @see https://github.com/crazy-max/ghaction-github-pages
