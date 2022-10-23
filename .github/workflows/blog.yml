@@ -1,5 +1,5 @@
 # action 的name
-name: test
+name: docs
 
 on:
   # 每当 push 到 blog 分支时触发部署
