@@ -5,19 +5,11 @@
 <script setup lang='ts'>
 import { ref, reactive, onMounted } from "vue";
 import Modal from "../components/modal.vue";
-import snowflake from "../core/snowflake";
-
-const CanvasDom = ref<HTMLCanvasElement>();
-onMounted(() => {
-  const { clientWidth: Width, clientHeight: Height } = document.documentElement;
-  CanvasDom.value!.width = Width;
-  CanvasDom.value!.height = Height;
-  new snowflake(CanvasDom.value, "/image/one.jpg", Width, Height);
-});
+import Snowflake from '../components/snowflake.vue'
 
 const MyModal = ref<Boolean>(false);
 const qrCode = ref("/image/QQ.jpg");
-const OpenModal = function (Selected: number = 0) {
+const OpenModal = function (Selected: number = 0):void {
   if (Selected == 0) {
     qrCode.value = "/image/QQ.jpg";
   } else {
@@ -28,8 +20,7 @@ const OpenModal = function (Selected: number = 0) {
 </script>
 <template>
   <div class="Container">
-    <canvas id="CanvasDom" ref="CanvasDom"></canvas>
-    <div class="borderView">
+    <Snowflake id="CanvasDom">
       <div class="Content">
         <div class="avatar">
           <img src="/image/avatar.jpg" alt="头像" />
@@ -42,12 +33,14 @@ const OpenModal = function (Selected: number = 0) {
             </div>
             <ul>
               <li>
-                <strong>前端：</strong>Vue.js, HTML5, JavaScript, TypeScript,
-                ES6, CSS3, SCSS
+                <strong>前端：</strong>Vue.js，HTML5， JavaScript（TS），CSS3（SCSS）
               </li>
-              <li><strong>后端：</strong>asp.net core</li>
-              <li><strong>PC：</strong>WPF, winform, maui</li>
-              <li><strong>安卓：</strong>Kotlin, Xamarin</li>
+              <li>
+                <strong>UI：</strong>Element-plus、uniApp、ECharts
+              </li>
+              <li><strong>后端：</strong>asp.net core，使用EF core操作sqlServer数据库</li>
+              <li><strong>PC：</strong>熟悉WPF</li>
+              <li><strong>安卓：</strong>了解Kotlin</li>
             </ul>
           </div>
           <div class="information">
@@ -58,7 +51,7 @@ const OpenModal = function (Selected: number = 0) {
           </div>
           <div class="more hero">
             <p class="actions">
-              <a href="" class="primary"> 进入博客 </a>
+              <a href="/Home" class="primary"> 进入博客 </a>
               <!-- <a href="" class="secondary"> 进入博客 </a> -->
             </p>
           </div>
@@ -78,16 +71,14 @@ const OpenModal = function (Selected: number = 0) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div>    
+    </Snowflake>
 
-    <ClientOnly>
-      <Modal v-model:model-view="MyModal">
+    <Modal v-model:model-view="MyModal">
         <div class="Qrcode">
           <img :src="qrCode" alt="加我微信" />
         </div>
-      </Modal>
-    </ClientOnly>
+    </Modal>
   </div>
 </template>
     
@@ -100,34 +91,19 @@ h1 {
   margin: 0;
 }
 /* SCSS code here*/
-.Container {
-  width: 100vw;
-  height: 100%;
-  position: relative;
-  #CanvasDom {
-    width: 100vw;
-  }
-  .borderView {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .Content {
+#CanvasDom{
+  .Content {
       position: relative;
-      width: 98%;
+      width: 95%;
       height: auto;
       max-width: 1100px;
       border-radius: 17px;
       background: $back;
       // filter:blur(3px);
       backdrop-filter: blur(2px);
-      margin: auto;
+      // @media all and (max-height:700px){
+      //   margin: 120px 0 60px 0;
+      // }
       .describe {
         width: 100%;
         height: calc(100% - 60px);
@@ -203,7 +179,6 @@ h1 {
         }
       }
     }
-  }
 }
 
 .Qrcode {

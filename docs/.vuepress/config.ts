@@ -3,13 +3,12 @@
  * @Date: 2022-10-18 22:26:21
  */
 import {defineUserConfig, defaultTheme} from 'vuepress'
-import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 export default defineUserConfig({
     lang:'zh-CN',
     title:'Summary_知识总结',
     description:'关于编程语言的总结知识，本站使用vuepress搭建',
-    base:'/Summary/',
+    base:'/',
     head:[
         ['link',{rel:'icon',href:'/image/Logo.ico'}]
     ],
@@ -19,9 +18,6 @@ export default defineUserConfig({
         
     }),
     plugins:[
-        docsearchPlugin({
-
-        })
     ],
     // dest:'dist'
 });

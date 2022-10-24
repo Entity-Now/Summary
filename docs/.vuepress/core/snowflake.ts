@@ -29,14 +29,14 @@ class snowflake{
         this.img = new Image();
         this.img.src = _background;
         this.img.onload = ()=>{
-            this.ctx.drawImage(this.img,0,0,this.width,this.height);
+            this.drawBack();
         
             this.render();
         }
         
     }
     render(){
-        this.ctx.drawImage(this.img,0,0,this.width,this.height);
+        this.drawBack();
         this.ctx.fillStyle = 'white';
         this.Colors.forEach(item=>{
             item.y = item.y > this.height ? 0 : item.y + item.step;
@@ -45,6 +45,16 @@ class snowflake{
             this.ctx.fill();
         })
         requestAnimationFrame(()=>this.render());
+    }
+    drawBack(){
+        this.ctx.drawImage(this.img,0,0,this.width,this.height);
+    }
+    resize({Width,Height}:{Width:number,Height:number}){
+        // 改变尺寸之前先清空画布
+        this.ctx.clearRect(0,0,this.width,this.height);
+        this.height = Height;
+        this.width = Width;
+        this.drawBack();
     }
 }
 export default snowflake;
