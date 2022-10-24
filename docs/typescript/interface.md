@@ -3,7 +3,7 @@
  * @Date: 2022-10-07 17:01:25
 -->
 
-### interface 接口
+# interface 接口
 ```js
 interface LabelledValue{
     label : string;

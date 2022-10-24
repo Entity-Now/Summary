@@ -1,3 +1,10 @@
+<!--
+ * @作者: 14770137
+ * @Date: 2022-10-22 04:38:16
+-->
+# scss
+
+```css
 // 变量声明
 $border-color:#aaa;
 // $border-color === $border_color 
@@ -42,3 +49,5 @@ li{
         right: 0;
     }
 }
+
+```

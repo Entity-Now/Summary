@@ -38,8 +38,8 @@ export default defineComponent({
     animation: OpenModal .1s linear normal forwards;
     .ModalView {
         background: white;
-        min-width: 310px;
-        min-height: 310px;
+        min-width: 280px;
+        min-height: 280px;
         padding: 14px;
         box-sizing: border-box;
         width: auto;
@@ -48,6 +48,10 @@ export default defineComponent({
         border-radius: 7px;
         box-shadow: 0 0 16px 2px #777;
         position: relative;
+        @media all and (max-width:550px){
+            width: 250px;
+            height: 250px;
+        }
         .close{
             position: absolute;
             right: 0px;

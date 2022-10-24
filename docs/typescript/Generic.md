@@ -2,7 +2,7 @@
  * @作者: 14770137
  * @Date: 2022-10-07 19:53:29
 -->
-### 泛型
+# 泛型
 ```js
 // 泛型
 function loggingIdentity<T>(val : T){

@@ -7,13 +7,23 @@ interface IColors{
     x:number;
     step:number;
 }
-class snowflake{
+export enum ImageTypes{
+    Mobile,
+    PC
+}
+interface CImages{
+    type:ImageTypes;
+    source:string;
+}
+export class snowflake{
+    canvas:HTMLCanvasElement;
     ctx:CanvasRenderingContext2D;
     img:HTMLImageElement;
     width:number;
     height:number;
     Colors:Array<IColors>;
-    constructor(_canvas:HTMLCanvasElement, _background:string, _width:number, _height:number){
+    constructor(_canvas:HTMLCanvasElement, _background:CImages[], _width:number, _height:number){
+        this.canvas = _canvas;
         this.ctx = _canvas.getContext('2d') as CanvasRenderingContext2D;
         this.width = _width;
         this.height = _height;
@@ -26,14 +36,28 @@ class snowflake{
             }
         });
         // 绘制初始背景
+        this.initBack();
         this.img = new Image();
-        this.img.src = _background;
+        if(this.width < 800){
+            this.img.src = _background.find(x=>x.type == ImageTypes.Mobile)!.source;
+        }else{
+            this.img.src = _background.find(x=>x.type == ImageTypes.PC)!.source;
+        }
         this.img.onload = ()=>{
             this.drawBack();
         
             this.render();
         }
         
+    }
+    /** 初始化背景 */
+    initBack(){
+        let linear = this.ctx.createLinearGradient(0,0,this.width,this.height);
+        linear.addColorStop(0.9,'blue');
+        linear.addColorStop(0.01,'pink');
+        this.ctx.fillStyle = linear;
+        this.ctx.rect(0,0,this.width,this.height);
+        this.ctx.fill();
     }
     render(){
         this.drawBack();
@@ -54,7 +78,8 @@ class snowflake{
         this.ctx.clearRect(0,0,this.width,this.height);
         this.height = Height;
         this.width = Width;
+        this.canvas.width = Width;
+        this.canvas.height = Height;
         this.drawBack();
     }
 }
-export default snowflake;

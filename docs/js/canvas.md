@@ -13,7 +13,7 @@ var canvas = document.getByIdElement("dom");
 var d2d = canvas.getContext("2d");
 ```
 
-#### canvas 操作
+## canvas 操作
 ```js
 // 填充颜色
 d2d.fillStyle = "rgb";
@@ -22,7 +22,7 @@ d2d.fillRect(y,x,width,height);
 
 ```
 
-#### 绘制三角形
+## 绘制三角形
 ```js
     // 绘制线条
     // 填充三角形
@@ -37,7 +37,7 @@ d2d.fillRect(y,x,width,height);
     canvas.height = canvas.height;
 ```
 
-#### 绘制线条
+## 绘制线条
 ```js
     var color = ['LightPink','Crimson','MediumBlue','MediumPink']
     for(let i = 0;i <= 3;i++){
@@ -51,7 +51,7 @@ d2d.fillRect(y,x,width,height);
     }
 ```
 ![lineWidth](/image/img/lineWidth.png)
-#### 绘制圆圈
+## 绘制圆圈
 ```js 
     // 清屏
     canvas.height = canvas.height;
@@ -64,7 +64,7 @@ d2d.fillRect(y,x,width,height);
     ctx.arc(40,40,10,0,2*Math.PI,true);
     ctx.stroke();
 ```
-#### 使用线条画正方形
+## 使用线条画正方形
 ```js            
     // 设置描边颜色
     ctx.strokeStyle = 'blue';
@@ -77,7 +77,7 @@ d2d.fillRect(y,x,width,height);
     ctx.stroke();
 ```
 
-#### LineCap 线条端点的样式
+## LineCap 线条端点的样式
 ```js
     // cap 线条端点的样式
     var lineCap = [
@@ -96,7 +96,7 @@ d2d.fillRect(y,x,width,height);
 ```
 ![LineCap](/image/img/lineCap.png)
 
-#### line join
+## line join
 ```js
     // lineJoin 线条连接点的样式
     var lineJoin = [
@@ -117,7 +117,7 @@ d2d.fillRect(y,x,width,height);
 ```
 ![linejoin](/image/img/LineJoin.png)
 
-#### 蚂蚁线动画，SetLineDash([线条稀疏度，线条间隙]),LineDashOffset = 起始点偏移量
+## 蚂蚁线动画，SetLineDash([线条稀疏度，线条间隙]),LineDashOffset = 起始点偏移量
 ```js
 <script>
     /** @type {HTMLCanvasElement}*/
@@ -147,7 +147,7 @@ d2d.fillRect(y,x,width,height);
 </script>
 ```
 
-#### 渐变色 linearGradient（x1,y1,x2,y2）
+## 渐变色 linearGradient（x1,y1,x2,y2）
 ```js
     // 渐变 createLinearGradient（x1,y1,x2,y2）
     // 径向渐变 createRadialGradient(x1,y1,r1,x2,y2,r2);
@@ -159,7 +159,7 @@ d2d.fillRect(y,x,width,height);
     ctx.rect(0,0,300,300);
     ctx.fill();
 ```
-#### redialGradient(x1,y1,r1,x2,y2,r2);
+## redialGradient(x1,y1,r1,x2,y2,r2);
 ```js
     var linear = ctx.createRadialGradient(150,150,30,150,150,15);
     linear.addColorStop(.1,'blue');
@@ -172,7 +172,7 @@ d2d.fillRect(y,x,width,height);
 ```
 ![radialGradient](/image/img/radialGradient.png)
 
-#### 绘制图案，CreatePattern 
+## 绘制图案，CreatePattern 
 ```js
     // pattern 绘制图案
     var img = new Image();
@@ -186,7 +186,7 @@ d2d.fillRect(y,x,width,height);
 ```
 ![pattern](/image/img/CreatePattern.png)
 
-#### 阴影与字体 shadow fillText
+## 阴影与字体 shadow fillText
 ```js
     // shadows
     // offset x,y偏移
@@ -203,7 +203,7 @@ d2d.fillRect(y,x,width,height);
 ```
 ![fillText](/image/img/FillText.png)
 
-#### 字体
+## 字体
 ```js
     // fillText
     ctx.font = '48px serif';
@@ -219,13 +219,13 @@ d2d.fillRect(y,x,width,height);
 ```
 ![fillText](/image/img/FillText2.png)
 
-#### 测量文本宽度，measureText
+## 测量文本宽度，measureText
 ```js 
     var test = ctx.measureText('你好，世界~');
     ctx.strokeText(test.width,10,50);
 ```
 
-#### 图片渲染
+## 图片渲染
 ```js
     // image
     var img = new Image();
@@ -237,7 +237,7 @@ d2d.fillRect(y,x,width,height);
     }
 ```
 
-#### save 与 restore
+## save 与 restore
 ```js
     // save 保存当前状态（style,alpha,width,cap,join,miterLimit,shadow,color,blur,cont,textAlign,baseLine,direction等等等）
     // store 恢复保存的状态
@@ -252,7 +252,7 @@ d2d.fillRect(y,x,width,height);
     ctx.strokeRect(70,10,50,50);
 ```
 
-#### translate 移动
+## translate 移动
 ```js
 ctx.fillStyle = 'red';
 // translate 移动
@@ -261,7 +261,7 @@ ctx.translate(10,10);
 ctx.fillRect(0,0,50,50);
 ```
 
-#### rotate 旋转
+## rotate 旋转
 ```js
     ctx.strokeStyle = 'red';
     ctx.fillStyle = 'pink';
@@ -282,7 +282,7 @@ ctx.fillRect(0,0,50,50);
 ```
 ![rotate](/image/img/rotate.png)
 
-#### 缩放 scale
+## 缩放 scale
 ```js
     ctx.strokeStyle = 'red';
     ctx.fillStyle = 'pink';
@@ -294,23 +294,8 @@ ctx.fillRect(0,0,50,50);
 ```
 ![scale](/image/img/scale.png)
 
-#### 
-```js
-```
 
-#### 
-```js
-```
-
-#### 
-```js
-```
-
-#### 
-```js
-```
-
-#### 签名工具
+## 签名工具
 ```js
     /** @type {HTMLCanvasElement}*/
     var canvas = document.getElementById("dom");
@@ -359,7 +344,7 @@ ctx.fillRect(0,0,50,50);
 ```
 ![arc](/image/img/arc.png) ![line](/image/img/drawLine.png)
 
-#### 签名绘制2.0 
+## 签名绘制2.0 
 ```js
     /** @type {HTMLCanvasElement}*/
     var canvas = document.getElementById("dom");

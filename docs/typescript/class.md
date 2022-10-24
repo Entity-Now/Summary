@@ -44,7 +44,7 @@ tom.move(34);
 ##### readonly 表示属性是只读的，赋值之后不可再被改变
 ##### static 存在于类本身上面，而不是类的实例上面
 
-#### 存取器
+## 存取器
 ```js
 class test{
     _fullName : string;
@@ -56,7 +56,7 @@ class test{
     }
 }
 ```
-#### 抽象类
+## 抽象类
 ```js
 // 抽象类它们一般不会直接被实例化，不同于接口，抽象类可以包含成员的实现细节
 abstract class Animal{
@@ -77,7 +77,7 @@ let a : AccountingDepartment = new AccountingDepartment();
 a.makeSound();
 ```
 
-#### class当接口
+## class当接口
 ```js
 class Point {
     x: number;
