@@ -1,8 +1,5 @@
-<!--
- * @作者: 14770137
- * @Date: 2022-09-30 15:20:21
--->
-# 时钟动画
+# canvas绘制时钟
+
 ![clock](/image/img/Clock.png)
 ```js
     /** @type {HTMLCanvasElement}*/

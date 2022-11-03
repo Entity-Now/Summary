@@ -3,10 +3,12 @@
  * @Date: 2022-10-18 22:26:21
  */
 import { defineUserConfig, defaultTheme } from 'vuepress'
+import sidebar from './Config/sidebar'
+import navbar from './Config/navbar'
 
 export default defineUserConfig({
     lang: 'zh-CN',
-    title: 'Summary_知识总结',
+    title: 'Entity的个人博客',
     description: '关于编程语言的总结知识，本站使用vuepress搭建',
     base: '/',
     head: [
@@ -15,63 +17,17 @@ export default defineUserConfig({
     theme: defaultTheme({
         logo: '/image/MenuLogo.png',
         repo: 'https://github.com/2966388213/Summary',
-        navbar: [
-            {
-                text: 'JavaScript',
-                children: [
-                    '/js/canvas.md', '/js/canvasClock.md', '/js/Math.md',
-                    '/js/readme.md'
-                ]
-            },
-            {
-                text: 'git',
-                children: ['/git/readme.md']
-            },
-            {
-                text: 'css',
-                children: ['/css/flex.md','/css/scss.md']
-            },
-            {
-                text: 'c++',
-                children: ['/C++/cmake.md', '/C++/readme.md',
-                    '/C++/vcpkg.md'
-                ]
-            },
-            {
-                text: 'markDown',
-                children: [
-                    '/markdown/markdown.md'
-                ]
-            },
-            {
-                text: 'TypeScript',
-                children: [
-                    '/typescript/class.md',
-                    '/typescript/constructSign.md',
-                    '/typescript/crossType.md',
-                    '/typescript/enum.md',
-                    '/typescript/function.md',
-                    '/typescript/Generic.md',
-                    '/typescript/indentifier.md',
-                    '/typescript/interface.md',
-                    '/typescript/mapping.md',
-                    '/typescript/predicate.md',
-                    '/typescript/readme.md',
-                    '/typescript/stringType.md',
-                    '/typescript/type.md',
-                    '/typescript/union.md',
-                ]
-            },
-            {
-                text: 'Vue',
-                children: [
-                    '/Vue/readme.md',
-                    '/Vue/router.md',
-                    '/Vue/V-model.md',
-                    '/Vue/vuepress.md'
-                ]
-            }
-        ]
+        editLink:false,
+        lastUpdatedText:'上次编辑时间',
+        contributorsText:'作者',
+        notFound:[
+            '404 未找到此页面',
+            '404 我怎么不知道有这么一个页面？'
+        ],
+        backToHome:'去首页',
+        toggleColorMode:'切换主题颜色',
+        navbar: navbar,
+        sidebar:sidebar
     }),
     plugins: [
     ],

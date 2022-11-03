@@ -2,7 +2,9 @@
  * @作者: 14770137
  * @Date: 2022-10-06 16:19:54
 -->
-# typescript
+# ts 开始
+
+## 安装
 ```ts
     // start 
     // 安装ts
@@ -10,7 +12,7 @@
     // 编译
     tsc 文件.ts
 ```
-### 类型 type
+## 类型 type
 ```js 
     function test(val:string){
     return val;
@@ -56,7 +58,7 @@
     // 任何不更改值的变量都应该使用const
 ```
 
-### 解构数组
+## 解构数组
 ```js
 // 解构
 let [a , b] = [1,2];
@@ -78,7 +80,7 @@ console.log(data1); // 1
 console.log(data3); // [ 1, 2, 3, 4 ]
 ```
 
-### 解构对象
+## 解构对象
 ```js
 // 解构对象
 let obj = {
@@ -109,13 +111,13 @@ console.log(aa,passthrough); // output foo { b: 12, c: 'bar' }
 let {aa : test,...pass} = o;
 console.log(test,pass); // output foo { b: 12, c: 'bar' }
 ```
-### 别名
+## 别名
 ```js
 // byName = 别名
 let {a : byName} = {a : '123'};
 ```
 
-### 解构与默认值
+## 解构与默认值
 ```js
 // 默认值
 let {a , b = 1000} = {a : '123'};

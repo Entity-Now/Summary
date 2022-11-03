@@ -4,7 +4,7 @@
 -->
 # 包管理工具 vcpkg
 
-#### 入门
+## 入门
 ```
 // 首先就是clone项目
 git clone https://github.com/Microsoft/vcpkg.git
@@ -16,7 +16,7 @@ git clone https://github.com/Microsoft/vcpkg.git
 vcpkg integrate install
 ```
 
-#### 安装库
+## 安装库
 ```
 vcpkg install imgui
 vcpkg isntall imgui:x64-windows
@@ -26,12 +26,12 @@ vcpkg search imgui
 vcpkg remove imgui
 ```
 
-#### 查看已安装的库
+## 查看已安装的库
 ```
 vcpkg list
 ```
 
-#### 设置默认安装的库版本
+## 设置默认安装的库版本
 ```
 // 更改环境变量
 VCPKG_DEFAULT_TRIPLET=x64-windows
