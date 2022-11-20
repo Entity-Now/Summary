@@ -72,6 +72,15 @@ const navbar: NavbarConfig = [
             }
         ]
     },
+    {
+        text:"其他",
+        children:[
+            {
+                text:'SEO推广',
+                link:'/other/seo面试.md'
+            }
+        ]
+    }
 ]
 
 export default navbar;

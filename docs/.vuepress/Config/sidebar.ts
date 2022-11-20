@@ -106,6 +106,12 @@ const sidebar:SidebarConfig =  {
                 '/CSharp/Linq.md'
             ]
         }
+    ],
+    "/other/":[
+        {
+            text:'Seo推广',
+            link:"seo面试.md"
+        }
     ]
 }
 export default sidebar;

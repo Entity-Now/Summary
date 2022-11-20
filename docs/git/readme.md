@@ -5,7 +5,7 @@
 # git 入门
 
 ## 初始化
-```cmd
+```sh
 // 初始化config
 git config --global user.name ""
 git config --global user.email ""
@@ -73,7 +73,7 @@ git log --pretty=oneline // 每个提交都放在一行显示
 ```
 
 ## 克隆一个项目
-```cmd
+```sh
 git clone url
 // 克隆指定版本的库
 git clone -b url
@@ -82,27 +82,27 @@ git clone --recursive url
 ```
 
 ## 更新分支的坑
-```cmd
+```sh
 // 修改完文件需要更新到服务器时，首先把本地的变化连接到服务器
 git pull origin mian
 // 然后再提交就ojbk了
 ```
 
 ## 修改提交信息
-```cmd
+```sh
 // 比如说你commit -m 之后发现描述或者文件有变动，可以使用amend修改
 // 比如发现一个地方改错了，下一次提交的时候不想保存上一次的记录
 git commit --amend
 ```
 
 ## 撤销操作
-```cmd
+```sh
 git reset --hard
 git reset id // id 是提交的唯一id
 ```
 
 ## 远程仓库管理
-```cmd
+```sh
 // 修改仓库名称
 git remote rename origin NewName
 // 查询远程仓库地址
@@ -115,14 +115,14 @@ git remote rm origin
 ```
 
 ## 分支操作
-```cmd
+```sh
 // 删除一个远程分支
 git push origin --delete master
 // 删除一个本地分支
 git branch -d main
 ```
 ## 变基，当前分支的所有修改移到另一个分支上面
-```cmd
+```sh
 git checkout maser
 // 变基到master分支
 git rebase main
@@ -134,7 +134,7 @@ git merge maser
 ```
 
 ## 标签
-```cmd
+```sh
 git tag
 git tag -l 
 git tag -list
