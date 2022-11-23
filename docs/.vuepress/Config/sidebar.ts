@@ -105,12 +105,26 @@ const sidebar:SidebarConfig =  {
             children:[
                 '/CSharp/Linq.md'
             ]
+        },
+        {
+            text:"小知识",
+            children:[
+                "other.md"
+            ]
         }
     ],
     "/other/":[
         {
             text:'Seo推广',
-            link:"seo面试.md"
+            children:[
+                "seo.md"
+            ]
+        },
+        {
+            text:"面试经验",
+            children:[
+                "SeoOffer.md"
+            ]
         }
     ]
 }

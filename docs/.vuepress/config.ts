@@ -3,6 +3,7 @@
  * @Date: 2022-10-18 22:26:21
  */
 import { defineUserConfig, defaultTheme } from 'vuepress'
+import { containerPlugin } from '@vuepress/plugin-container'
 import sidebar from './Config/sidebar'
 import navbar from './Config/navbar'
 
@@ -30,6 +31,9 @@ export default defineUserConfig({
         sidebar:sidebar
     }),
     plugins: [
+        containerPlugin({
+            type:'tip'
+        })
     ],
     // dest:'dist'
 });

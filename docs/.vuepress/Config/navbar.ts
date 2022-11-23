@@ -38,13 +38,13 @@ const navbar: NavbarConfig = [
                 link:'/CSharp/linq.md'
             },
             {
+                text:'C#小知识',
+                link:'/CSharp/other.md'
+            },
+            {
                 text:'Kotlin',
                 link:'/kotlin/README.md'
             },
-            // {
-            //     text:'node.js',
-            //     link:''
-            // },
             {
                 text:'c++',
                 link:'/C++/readme.md'
@@ -77,7 +77,11 @@ const navbar: NavbarConfig = [
         children:[
             {
                 text:'SEO推广',
-                link:'/other/seo面试.md'
+                link:'/other/seo.md'
+            },
+            {
+                text:"Seo面试总结",
+                link:'/other/SeoOffer.md'
             }
         ]
     }

@@ -38,3 +38,6 @@ actions:
     - [markdown](./markdown/README.md)
     - [cmake](./C++/cmake.md)
     - [vcpkg](./C++/vcpkg.md)
+- SEO
+  - [搜索引擎推广](./other/seo.md)
+  - [面试经验](./other/SeoOffer.md)
