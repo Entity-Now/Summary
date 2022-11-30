@@ -126,6 +126,20 @@ const sidebar:SidebarConfig =  {
                 "SeoOffer.md"
             ]
         }
+    ],
+    "/uniApp/":[
+        {
+            text:"uniApp微信配置",
+            children:[
+                "README.md"
+            ]
+        },
+        {
+            text:"vscode && uni-app",
+            children:[
+                "vscode.md"
+            ]
+        }
     ]
 }
 export default sidebar;

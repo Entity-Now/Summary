@@ -22,7 +22,12 @@ const navbar: NavbarConfig = [
             },
             {
                 text:'CSS',
-                link:'/Vue/'
+                link:'/css/flex.md'
+            }
+            ,
+            {
+                text:"uniApp",
+                link:"/uniApp/README.md"
             }
         ]
     },
