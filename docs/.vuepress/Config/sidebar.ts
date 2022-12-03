@@ -13,7 +13,9 @@ const sidebar:SidebarConfig =  {
                 '/js/Math.md',
                 '/js/CircleCollision.md',
                 '/js/canvasClock.md',
-                '/js/canvas.md'
+                '/js/canvas.md',
+                'dom.md',
+                'IntersectionObserver.md'
             ]
         }
     ],
@@ -33,6 +35,8 @@ const sidebar:SidebarConfig =  {
             children:[
                 '/css/flex.md',
                 '/css/scss.md',
+                'scroll.md',
+                'other.md'
             ]
         }
     ],

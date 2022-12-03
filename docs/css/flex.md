@@ -60,9 +60,18 @@
 > 允许自己跟其他元素不一样的对齐方式，可以覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch
 
 ## flex 子元素不能撑满父元素的问题
+### 第一种
 ```css
 <!-- 在父类上面使用baseline -->
 .father{
     align-self:baseline;
+}
+```
+### 第二种
+```css
+/* 父类设置 */
+.body{
+    display:flex;
+    justify-content:center;
 }
 ```
