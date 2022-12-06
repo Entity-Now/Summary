@@ -15,7 +15,8 @@ const sidebar:SidebarConfig =  {
                 '/js/canvasClock.md',
                 '/js/canvas.md',
                 'dom.md',
-                'IntersectionObserver.md'
+                'IntersectionObserver.md',
+                'event.md'
             ]
         }
     ],
@@ -114,6 +115,18 @@ const sidebar:SidebarConfig =  {
             text:"小知识",
             children:[
                 "other.md"
+            ]
+        },
+        {
+            text:"WinUI3管理员方式运行",
+            children:[
+                "WinUI3Admin.md"
+            ]
+        },
+        {
+            text:"dotnet",
+            children:[
+                "dotnet.md"
             ]
         }
     ],
