@@ -27,7 +27,11 @@ const navbar: NavbarConfig = [
             ,
             {
                 text:"uniApp",
-                link:"/uniApp/README.md"
+                link:"/uniApp/uniApp.md"
+            },
+            {
+                text:'Node.js',
+                link:"/Node.js/README.md"
             }
         ]
     },
@@ -87,6 +91,10 @@ const navbar: NavbarConfig = [
             {
                 text:"Seo面试总结",
                 link:'/other/SeoOffer.md'
+            },
+            {
+                text:"HTML资源加载方式",
+                link:'/other/html_preload_prefetch.md'
             }
         ]
     }

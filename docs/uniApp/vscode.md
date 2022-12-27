@@ -6,9 +6,17 @@
 npm install -g @vue/cli
 ```
 > 通过CLI创建`uni-app`项目
+> vue 2.0
 ```sh
 vue create -p dcloudio/uni-preset-vue my-project
 ```
+> vue 3.0
+```sh
+npx degit dcloudio/uni-preset-vue#vite my-vue3-project
+
+npx degit dcloudio/uni-preset-vue#vite-ts my-vue3-project
+```
+
 
 ## 运行、发布uni-app
 ```sh

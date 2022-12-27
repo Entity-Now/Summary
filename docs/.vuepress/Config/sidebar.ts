@@ -25,8 +25,13 @@ const sidebar:SidebarConfig =  {
             text:'C++',
             children:[
                 '/C++/readme.md',
+                'pointer.md',
+                'lambda.md',
+                'cast.md',
+                'template.md',
+                'explicit.md',
                 '/C++/cmake.md',
-                '/C++/vcpkg.md'
+                '/C++/vcpkg.md',
             ]
         }
     ],
@@ -37,7 +42,8 @@ const sidebar:SidebarConfig =  {
                 '/css/flex.md',
                 '/css/scss.md',
                 'scroll.md',
-                'other.md'
+                'other.md',
+                'grid.md'
             ]
         }
     ],
@@ -78,7 +84,9 @@ const sidebar:SidebarConfig =  {
                 '/Vue/readme.md',
                 '/Vue/router.md',
                 '/Vue/V-model.md',
-                '/Vue/vuepress.md'
+                '/Vue/vuepress.md',
+                'server.md',
+                'pinia.md'
             ]
         }
     ],
@@ -142,9 +150,21 @@ const sidebar:SidebarConfig =  {
             children:[
                 "SeoOffer.md"
             ]
+        },
+        {
+            text:'HTML5资源预加载',
+            children:[
+                'html_preload_prefetch.md'
+            ]
         }
     ],
     "/uniApp/":[
+        {
+            text:'uniApp',
+            children:[
+                'uniApp.md'
+            ]
+        },
         {
             text:"uniApp微信配置",
             children:[
@@ -155,6 +175,14 @@ const sidebar:SidebarConfig =  {
             text:"vscode && uni-app",
             children:[
                 "vscode.md"
+            ]
+        }
+    ],
+    "/Node.js":[
+        {
+            text:'node.js 与 express',
+            children:[
+                'README.md'
             ]
         }
     ]
