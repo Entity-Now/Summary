@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-5c61d770","path":"/typescript/crossType.html","title":"交叉类型","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1673170087000,"contributors":[{"name":"Entity233","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"typescript/crossType.md"}');export{t as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-226ec4fd","path":"/typescript/stringType.html","title":"字符串字面量类型","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1673170087000,"contributors":[{"name":"Entity233","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"typescript/stringType.md"}');export{t as data};
