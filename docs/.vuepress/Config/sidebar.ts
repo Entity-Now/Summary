@@ -30,6 +30,7 @@ const sidebar:SidebarConfig =  {
                 'cast.md',
                 'template.md',
                 'explicit.md',
+                'define.md',
                 '/C++/cmake.md',
                 '/C++/vcpkg.md',
             ]
@@ -114,15 +115,15 @@ const sidebar:SidebarConfig =  {
             ]
         },
         {
-            text:'linq',
-            children:[
-                '/CSharp/Linq.md'
-            ]
-        },
-        {
             text:"小知识",
             children:[
                 "other.md"
+            ]
+        },
+        {
+            text:'linq',
+            children:[
+                '/CSharp/Linq.md'
             ]
         },
         {
@@ -136,7 +137,33 @@ const sidebar:SidebarConfig =  {
             children:[
                 "dotnet.md"
             ]
+        },
+        {
+            text:"xpath",
+            children:[
+                "xpath.md"
+            ]
+        },
+        {
+            text:"asp in linux",
+            children:[
+                "linux_Run.md"
+            ]
+        },
+        {
+            text:"win ui3",
+            children:[
+                "win_ui_3.md",
+                'CommunityToolKit.Mvvm.md',
+                'Win3UI.md',
+                'Xaml_Element.md'
+            ]
+        },
+        {
+            text:'Dependency依赖关系注入',
+            link:'Dependency.md'
         }
+
     ],
     "/other/":[
         {

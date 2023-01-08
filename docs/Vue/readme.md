@@ -22,4 +22,31 @@ const func = function(){
 </template>
 ```
 
-## 
+## Props and Emits
+```html
+<script setup>
+const props = defineProps({
+  foo: String
+})
+
+const emit = defineEmits(['change', 'delete'])
+// setup 代码
+</script>
+```
+
+## v-slot 获取组件内插槽的属性
+```html 
+<!-- tabBar.vue -->
+<view class="TopView">
+    <slot List="hello world"></slot>
+</view>
+</template>
+```
+```html
+<!-- 2.html -->
+<tabBar id="tabBar" :SelectIndex="1" :List="TabBarList">
+    <template v-slot="{ List }">
+    <h1>{{ List }}</h1>
+    </template>
+</tabBar>
+```

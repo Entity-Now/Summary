@@ -78,6 +78,10 @@ const navbar: NavbarConfig = [
             {
                 text:'markDown',
                 link:'/markdown/README.md'
+            },
+            {
+                text:'Xpath',
+                link:'/CSharp/xpath.md'
             }
         ]
     },
