@@ -31,6 +31,20 @@ app.use(express.static('public'));
 app.use('/public',express.static('public'));
 ```
 
+## 错误处理中间件
+错误处理器中间件的定义和其他中间件一样，唯一的区别是 4 个而不是 3 个参数，即 (err, req, res, next)：
+```js
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+```
+```
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry can't find that!")
+})
+```
+
 ## 设置参数
 ```js
 router.get('/test/:Id',(req,res)=>{
