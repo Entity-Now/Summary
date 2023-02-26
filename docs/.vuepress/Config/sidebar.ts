@@ -14,6 +14,7 @@ const sidebar:SidebarConfig =  {
                 '/js/CircleCollision.md',
                 '/js/canvasClock.md',
                 '/js/canvas.md',
+                'canvasPieChart.md',
                 'dom.md',
                 'IntersectionObserver.md',
                 'event.md'
