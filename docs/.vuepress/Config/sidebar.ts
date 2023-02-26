@@ -183,6 +183,13 @@ const sidebar:SidebarConfig =  {
             children:[
                 'html_preload_prefetch.md'
             ]
+        },
+        {
+            text:"算法/设计模式",
+            children:[
+                'calculation.md',
+                'Design.md'
+            ]
         }
     ],
     "/uniApp/":[
