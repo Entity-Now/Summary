@@ -14,6 +14,7 @@ const sidebar:SidebarConfig =  {
                 '/js/CircleCollision.md',
                 '/js/canvasClock.md',
                 '/js/canvas.md',
+                'canvasPieChart.md',
                 'dom.md',
                 'IntersectionObserver.md',
                 'event.md'
@@ -182,6 +183,13 @@ const sidebar:SidebarConfig =  {
             text:'HTML5资源预加载',
             children:[
                 'html_preload_prefetch.md'
+            ]
+        },
+        {
+            text:"算法/设计模式",
+            children:[
+                'calculation.md',
+                'Design.md'
             ]
         }
     ],

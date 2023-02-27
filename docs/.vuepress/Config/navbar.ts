@@ -99,6 +99,14 @@ const navbar: NavbarConfig = [
             {
                 text:"HTML资源加载方式",
                 link:'/other/html_preload_prefetch.md'
+            },
+            {
+                text:"常用算法",
+                link:'/other/calculation.md'
+            },
+            {
+                text:"设计模式",
+                link:'/other/Design.md'
             }
         ]
     }

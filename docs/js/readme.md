@@ -52,6 +52,17 @@ function test(){
     console.log(27 - (6 * Number.parseInt(27 / 6))); // 3
 ```
 
+## reduce用法
+好的，我可以给你一个reduce()的例子。假设你有一个数组，例如[1, 2, 3]，你想要计算它们的总和。你可以用reduce()这样写：
+
+```js
+const arr = [1, 2, 3];
+const sum = arr.reduce((total, current) => total + current);
+console.log(sum); // 6
+```
+
+reduce()方法接受两个参数：一个是回调函数，一个是初始值²³。回调函数也接受两个参数：一个是累积值，一个是当前值²³。reduce()方法会对数组中的每个元素执行回调函数，并把返回值作为下一次的累积值²⁴。最后，reduce()方法会返回最终的累积值²³。
+
 ## object 
 ##### 定义对象属性
 ```js
