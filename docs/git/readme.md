@@ -135,8 +135,13 @@ git merge maser
 
 ## 标签
 ```sh
+// 查看标签
 git tag
-git tag -l 
+// 使用tag -n查看标签的详细信息
+git tag -n
+// 你还可以使用 “-l” 选项来根据模式过滤标签列表
+git tag -l 'v1.1.*'
+// 
 git tag -list
 // 创建标签 ， （lightweight，annotated）
 // 创建带注释的标签（annotated）
@@ -145,3 +150,21 @@ git tag -a test -m "test标签"
 git tag pushTag
 
 ```
+
+创建一个新标签的最简单方法是使用 -a 选项⁴：
+
+`git tag -a v1.4 -m "my version 1.4"`
+
+其中 v1.4 是标签名，-m 是指定一个标签信息，存储在标签中。如果你不指定一个信息，git 会打开你的编辑器让你输入⁴。
+
+给历史提交打上标签，你可以在 git tag 命令后面指定提交的 id¹：
+
+`git tag -a v1.2 9fceb02 -m "Message here"`
+
+其中 v1.2 是标签名，9fceb02 是提交 id 的前缀，-m 是指定一个标签信息。你可以用 git log 命令来查看当前分支的所有提交 id¹。
+
+然后你可以用 git push 命令来推送标签到远程仓库¹：
+
+`git push origin v1.2`
+
+
