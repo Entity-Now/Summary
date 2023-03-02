@@ -166,5 +166,3 @@ git tag pushTag
 然后你可以用 git push 命令来推送标签到远程仓库¹：
 
 `git push origin v1.2`
-
-
