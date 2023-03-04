@@ -4,4 +4,5 @@
 -->
 # markdown 入门
 
-#### 
+## code 支持的语言
+![MarkDownType](/image/MarkType.awebp)
