@@ -10,6 +10,9 @@
 git config --global user.name ""
 git config --global user.email ""
 git config --global http.sslVerify "false" // 关闭ssl认证
+// 目录所有权
+git config --global core.safeRepositoryPaths '*'
+ git config --global --add safe.directory '*'
 // cat config
 git config --list
 // proxy 代理

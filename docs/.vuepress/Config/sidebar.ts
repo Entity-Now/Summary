@@ -85,7 +85,7 @@ const sidebar:SidebarConfig =  {
             children:[
                 '/Vue/readme.md',
                 '/Vue/router.md',
-                '/Vue/V-model.md',
+                '/Vue/ViewModel.md',
                 '/Vue/vuepress.md',
                 'server.md',
                 'pinia.md'
