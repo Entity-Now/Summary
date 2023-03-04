@@ -112,19 +112,31 @@ const sidebar:SidebarConfig =  {
         {
             text:'C#入门',
             children:[
-                '/CSharp/README.md'
-            ]
-        },
-        {
-            text:"小知识",
-            children:[
-                "other.md"
-            ]
-        },
-        {
-            text:'linq',
-            children:[
-                '/CSharp/Linq.md'
+                {
+                    text:"基础入门",
+                    children:['/CSharp/README.md']
+                },
+                {
+                    text:"Reflection反射",
+                    children:[
+                        'Assembly.md'
+                    ]
+
+                },
+                {
+                    text:'其他知识',
+                    children:["other.md"]
+                },
+                {
+                    text:'Linq',
+                    children:['/CSharp/Linq.md']
+                },
+                {
+                    text:"xpath",
+                    children:[
+                        "xpath.md"
+                    ]
+                },
             ]
         },
         {
@@ -139,12 +151,7 @@ const sidebar:SidebarConfig =  {
                 "dotnet.md"
             ]
         },
-        {
-            text:"xpath",
-            children:[
-                "xpath.md"
-            ]
-        },
+
         {
             text:"asp in linux",
             children:[

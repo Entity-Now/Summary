@@ -1,5 +1,92 @@
 # Assembly反射
 
+## 使用Assembly.LoadFrom加载程序集
+ LoadFrom()方法可以从指定文件中加载程序集
+```cs
+namespace TestDll
+{
+    public class TestDll
+    {
+        public string DefaultValue { get; set; } = "我是默认值";
+    }
+}
+```
+```cs
+// 加载程序集
+var a = Assembly.LoadFrom("DLL的路径");
+// 获取对象类型，命名空间+类名
+Type class_type = a.GetType("TestDll.TestDll");
+// 创建对象实例
+var T = Activator.CreateInstance(class_type);
+// 输出对象属性
+Console.WriteLine(((dynamic)T).DefaultValue);
+```
+
+## 使用Assembly.Load加载程序集
+```cs
+
+
+```
+
+## 使用AppDomain.CurrentDomain.GetAssemblies()创建当前程序集的对象
+```cs
+var a = AppDomain.CurrentDomain.GetAssemblies() // 获取已加载到此应用程序域的执行上下文中的程序集。
+    .FirstOrDefault(I=>I.GetName().Name == "reflection") // 获取name=reflection的程序集
+    .DefinedTypes
+    .FirstOrDefault(I=>I.Name == "TestReflection"); // 获取name = TestReflection的对象
+
+var t = Activator.CreateInstance(a);
+Console.WriteLine(((dynamic)t).Default);
+```
+
+## Assembly.DefinedTypes 与 Assembly.GetTypes()的区别
+>DefinedTypes返回一个TypeInfo对象的集合，而GetTypes返回一个Type对象的数组。
+
+>TypeInfo对象包含了类型的元数据和操作，而Type对象只包含了类型的元数据。
+
+>TypeInfo对象可以访问到嵌套类型的信息，而Type对象不能。
+```cs
+// 获取当前程序集
+var assembly = Assembly.GetExecutingAssembly();
+// 使用DefinedTypes获取类型信息
+var typeInfos = assembly.DefinedTypes;
+// 使用GetTypes获取类型信息
+var types = assembly.GetTypes();
+// 打印两者的长度
+Console.WriteLine(typeInfos.Count()); // 10
+Console.WriteLine(types.Length); // 9
+```
+
+## 使用Type直接创建对象
+```cs
+// 直接获取类型，参数=（命名空间+类名,程序集的名称）
+var t = Type.GetType("reflection.Model.TestReflection,reflection");
+var obj = Activator.CreateInstance(t);
+Console.WriteLine(((dynamic)obj).Default);
+```
+
+## MakeGenericMethod动态创建泛型方法
+```cs
+class TestMakeGenericMethod
+{
+    public void Input<T>(T value)
+    {
+        Console.WriteLine(value.ToString());
+    }
+}
+```
+```cs
+// 先创建一个类的实例，后面会把创建的泛型方法注入到此实例
+var entity = new TestMakeGenericMethod();
+
+var Make = typeof(TestMakeGenericMethod).GetMethod("Input");
+// 创建泛型方法并，其中参数是泛型的类型
+Make.MakeGenericMethod(typeof(string))
+    // 将方法传入到刚才创建的实例里面，第一个参数是实例，第二个是参数
+    .Invoke(entity,new object[] {"动态创建泛型方法"});
+```
+> output: 动态创建泛型方法
+
 ## 使用Activator创建对象
 使用类型名称创建一个字符串对象
 ```cs
