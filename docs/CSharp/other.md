@@ -3,6 +3,23 @@
 使用C#可能会经常使用的技术
 :::
 
+## Deconstruct 将元组分解赋值
+```cs
+class Point
+{
+    public int X { get; }
+    public int Y { get; }
+
+    public Point(int x, int y) => (X, Y) = (x, y);
+    // 返回一个元组
+    public void Deconstruct(out int x, out int y) => (x, y) = (X, Y);
+}
+
+var point = new Point(10, 20);
+// 分解元组
+var (x, y) = point; // deconstruct
+Console.WriteLine(x); // 10
+```
 
 ## dynamic
 ```cs
