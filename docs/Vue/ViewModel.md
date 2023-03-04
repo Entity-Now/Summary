@@ -28,6 +28,19 @@ const emits = defineEmits(['update:Open']);
 <ModalBox v-model:Open="ModalShow"/>
 ```
 
+## 嵌套v-model实现
+```html
+注意这里不能加v-model否则事件不会触发
+<ModalBox :Open="ModalShow" @update:Open="$emit('update:ModalShow',
+</ModalBox>
+```
+```js
+// props
+const props = defineProps(['ModalShow']);
+// 定义事件
+defineEmits(['update:ModalShow'])
+```
+
 ## 样式穿透 inheritAttrs
 ```html
 <template>
