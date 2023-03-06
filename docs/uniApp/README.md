@@ -62,6 +62,51 @@ H5平台通用代码（含微信服务号）
 // #endif
 ```
 
+## 环境变量
+添加.env文件
+```txt
+// VITE_ 开头
+VITE_URL=xxxx
+```
+vite.config.js
+```js
+import { defineConfig,loadEnv } from 'vite'
+import uni from '@dcloudio/vite-plugin-uni'
+// https://vitejs.dev/config/
+export default defineConfig(({ command, mode }) => {
+  // 根据当前工作目录中的 `mode` 加载 .env 文件
+  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
+  const env = loadEnv(mode, process.cwd(), '')
+  return {
+    plugins: [
+      uni(),
+    ],
+    // vite 配置
+    define: {
+      __APP_ENV__: env.APP_ENV,
+    },
+  }
+})
+```
+调用
+```js
+import.meta.env.VITE_URL
+// xxxx
+```
+
+## import.meta.env 与 process.env的区别
+您好，这是必应。😊
+
+process.env 和 import.meta.env 是两种不同的方式来访问环境变量的对象。process.env 是 Node.js 的一个全局变量，而 import.meta.env 是 Vite 框架注入的一个特殊对象²。
+
+process.env 和 import.meta.env 的区别在于：
+
+- process.env 需要在代码中显式地引入 dotenv 或类似的库来加载 .env 文件中的变量，而 import.meta.env 不需要。
+- process.env 中的变量都是字符串类型，而 import.meta.env 中的变量可以是布尔值或数字类型。
+- process.env 中的变量名需要以 VITE_ 开头才能被 Vite 识别，而 import.meta.env 中的变量名不需要。
+- process.env 在构建时就被替换为实际值，而 import.meta.env 在运行时才被替换为实际值³。
+
+
 ## 运行及发布项目
 ```sh
 npm run dev:custom mp-weixin
