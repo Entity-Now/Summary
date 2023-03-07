@@ -5,7 +5,7 @@
 # cmake 包管理工具
 
 ## CMakeLists.txt配置
-```text
+```cmake
 # CMake 最低版本号要求
 cmake_minimum_required(VERSION 2.8);
 
@@ -19,13 +19,47 @@ add_executable(name source.cpp);
 
 ## add_subdirectory 添加子文件
 > 该语句会在执行完当前文件夹CMakeLists.txt之后执行src子目录下的CMakeLists.txt
-```text
+```cmake
 add_subdirectory(src)
+```
+
+## link_directories()
+> 设置库目录
+```cmake
+# PROJECT_SOURCE_DIR 是 cmake的环境变量
+link_directories( ${PROJECT_SOURCE_DIR}/lib/linux)
+```
+## link_libraries
+> 链接静态库
+```cmake
+#设置链接目录
+link_directories( ${PROJECT_SOURCE_DIR}/lib/linux)
+link_libraries(
+        lib1.a
+        lib2.a
+)
+```
+
+## include_directories()
+> 设置项目的包含目录
+> include_directories 是用来指定头文件的搜索路径，让编译器能够找到需要的头文件。
+```cmake
+# 假设当前源码路径为 /home/user/project
+# 假设有一个头文件 hello.h 在 /home/user/project/include 目录下
+# 假设有一个源文件 main.cpp 在 /home/user/project/src 目录下
+
+# 添加 include 目录到头文件搜索路径
+include_directories(include) # include是文件目录
+
+# 添加 src 目录到源文件搜索路径
+add_executable(hello src/main.cpp)
+
+# 这样编译器就能找到 hello.h 文件了
 ```
 
 ## 递归搜索该文件夹，将文件夹下（包含子目录）符合类型的文件添加到文件列表
 > 例如将当前文件夹下（包括子目录下）所有.cpp文件的文件名加入到MAIN_SRC中，所有.h加入到MAIN_HDR中
-```text
+```cmake
 file(GLOB_RECURSE MAIN_SRC ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE MAIN_HDR ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 ```
@@ -33,7 +67,7 @@ file(GLOB_RECURSE MAIN_HDR ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 ## aux_source_directory();
 > aux_source_directory 把指定目录的源文件加载到变量里面
 
-```text
+```cmake
 # 第一个参数为源文件的目录
 # 第二个参数为自定义变量（无需声明）
 aux_source_directory(. SOURCES);
@@ -42,18 +76,35 @@ aux_source_directory("./Model/." Model);
 
 ```
 
+## add_executable 生成应用程序
+```cmake
+add_executable(应用程序 源文件);
+```
+
 ## add_library 生成库文件
-```text
+```cmake
 # 动态库文件
 add_library(lib_hello SHARED main.cpp);
 # 静态库文件
 add_library(lib_hello STATIC Main.cpp);
 ```
 
+## set_definitions()
+> add_definitions是一个CMake命令，它可以给当前目录和子目录中的目标(target)添加编译器定义(define)。它的语法是：
+
+`add_definitions (-DFOO -DBAR ...)`
+
+其中-D表示定义一个宏，FOO和BAR是宏的名字，你也可以给它们赋值，比如-DFOO=1 -DBAR=2。这些定义会被添加到编译器命令行中，影响源文件的编译。
+```cmake
+# 定义一个TEST的宏
+add_definitions("-DTEST");
+# 给宏赋值
+add_definitions("-DTEST=1");
+```
+
+
 ## set_target_properties();
 > set_property可以设置的属性取决于您指定的范围，例如目标、源文件、目录、测试或安装文件。每种范围都有一些特定的属性，您可以在[cmake-properties](https://cmake.org/cmake/help/v3.3/manual/cmake-properties.7.html)文档中查看 
-
-您可以使用set_property命令来设置不同范围的属性，例如：
 
 - set_property(TARGET ...)：设置一个或多个目标的属性，例如：
 

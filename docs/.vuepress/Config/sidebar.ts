@@ -33,6 +33,7 @@ const sidebar:SidebarConfig =  {
                 'explicit.md',
                 'define.md',
                 '/C++/cmake.md',
+                'conan.md',
                 '/C++/vcpkg.md',
             ]
         }
