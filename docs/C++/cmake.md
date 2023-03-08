@@ -6,15 +6,55 @@
 
 ## CMakeLists.txt配置
 ```cmake
-# CMake 最低版本号要求
-cmake_minimum_required(VERSION 2.8);
+# CMake 最低版本号要求, 此行必须在顶层
+cmake_minimum_required(VERSION 2.8)
 
 # 项目信息
 project("项目信息")
 
 # 指定生成目标
 # 第一个参数是程序名，第二个参数是源文件
-add_executable(name source.cpp);
+add_executable(name source.cpp)
+```
+
+## 构建项目
+```sh
+# 创建一个build目录
+mkdir build
+cd build
+
+# 构建项目，由于当前目录是build，所以使用..指向上一级目录
+cmake ..
+
+# 2
+cmake -
+```
+### 假设现在的目录是这样的
+- 根目录
+   - src
+      - CMakeLists.txt
+      - main.cpp
+   - build
+
+> 当前的目录是根目录
+```sh
+# 使用cmake 3.*的功能构建
+cmake -S src -B build
+
+# 项目会在build目录成功构建
+```
+
+## 生成项目
+```sh
+#其中src是构建的项目目录
+cmake --build src
+# --config 可以指定生成的类型
+cmake --build . --config Release
+```
+
+## 打开项目
+```sh
+cmake --open src
 ```
 
 ## add_subdirectory 添加子文件
