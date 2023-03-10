@@ -2,26 +2,44 @@
 
 ## 配置CMakeLists.txt文件
 ```cmake
-project(FoundationTimer)
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.26.0)
 
-# 引入conan生成的文件
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-# 启动conan
-conan_basic_setup()
+PROJECT(ConanTest)
+# 寻找ZLIB库
+find_package(ZLIB REQUIRED)
 
-add_executable(timer timer.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
+
+# 链接ZLIB库，这里的变量（ZLIB_LIBRARIES）在FindZBIB.cmake里面
+# 变量PROJECT_NAME是项目名称
+target_link_libraries(${PROJECT_NAME} ${ZLIB_LIBRARIES})
 ```
 
-## 配置conanfile.txt
+
+## profile配置
+```txt
+[settings]
+arch=x86_64
+build_type=Release
+os=Windows
+# 微软编译器
+compiler=msvc
+# msvc编译器的版本
+compiler.version=193
+# cpp的版本
+compiler.cppstd=17
+# static dynamic应该时库的类型
+compiler.runtime=dynamic
 ```
-[recipe_hash] # 这是远程库的hash值
-    faa6eb03bd1009bf2070b0c77e4f56a6
 
-[generators] 
-cmake
+## conanfile.txt
+```txt
+[requires]
+xxx
 
-[env]
+[generators]
+CMakeDeps
+CMakeToolchain
 ```
 
 ## 创建与我的系统匹配的配置文件
@@ -33,3 +51,26 @@ conan profile detect --force
 ```
 conan profile path default
 ```
+
+## install
+
+```sh
+conan install . --output-folder=build --build=missing
+```
+
+## 构建
+```sh
+# 
+came path -G "vs的版本" xxx其他配置
+
+cmake .. -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE=D:\Languages\conan\build\conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
+```
+![conan](/images/conan.png)
+
+## 生成
+```sh
+# 此命令在build目录里面执行
+cmake --build . --config Release
+```
+
+
