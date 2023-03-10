@@ -4,6 +4,13 @@
 -->
 # scss
 
+## 安装
+```sh
+npm install node-sass
+
+npm install sass --save-dev
+```
+
 ```css
 // 变量声明
 $border-color:#aaa;

@@ -89,7 +89,8 @@ const sidebar:SidebarConfig =  {
                 '/Vue/ViewModel.md',
                 '/Vue/vuepress.md',
                 'server.md',
-                'pinia.md'
+                'pinia.md',
+                '/markdown/Markdown-it.md'
             ]
         }
     ],
@@ -97,7 +98,8 @@ const sidebar:SidebarConfig =  {
         {
             text:'markDown',
             children:[
-                '/markdown/README.md'
+                '/markdown/README.md',
+                'Markdown-it.md'
             ]
         }
     ],

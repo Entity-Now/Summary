@@ -65,7 +65,7 @@ came path -G "vs的版本" xxx其他配置
 
 cmake .. -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE=D:\Languages\conan\build\conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
 ```
-![conan](/images/conan.png)
+![conan](/images/Conan.png)
 
 ## 生成
 ```sh
