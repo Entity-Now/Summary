@@ -92,3 +92,24 @@ import emoji from 'markdown-it-emoji/light'
 import emoji from 'markdown-it-emoji/full'
 import emoji from 'markdown-it-emoji/bare'
 ```
+### 获取emoji列表
+```js
+import emoji from 'markdown-it-emoji/lib/data/light.json'
+for(let item in emoji){
+    /// ...
+}
+```
+
+## 安装 markdown-it-container
+```sh
+npm install markdown-it-container --save
+```
+```js
+import MarkdownItContainer from 'markdown-it-container'
+// use
+md.use(MarkdownItContainer);
+// 添加类样式，此样式需要自己定义
+md.use(MarkdownItContainer, 'BeginEdit-left');
+md.use(MarkdownItContainer, 'BeginEdit-center');
+md.use(MarkdownItContainer, 'BeginEdit-right');
+```
