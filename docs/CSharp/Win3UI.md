@@ -35,6 +35,16 @@
 ```
 
 ## bind
+WPF中还有以下几种常用的标记扩展²：
+- StaticResource：通过替换已定义资源的值来为属性提供值。StaticResource 计算最终在 XAML 加载时进行，并且在运行时没有访问对象图的权限。
+- DynamicResource：通过将值推迟为对资源的运行时引用来为属性提供值。动态资源引用强制在每次访问此类资源时都进行新查找，且在运行时有权访问对象图。
+- Binding：使用在运行时应用于父对象的数据上下文来为属性提供数据绑定值。此标记扩展相对复杂，因为它会启用大量内联语法来指定数据绑定。
+- TemplateBinding：使控件模板能够使用模板化属性的值，这些属性来自于将使用该模板的类的对象模型定义属性。
+- x:Type：为命名类型提供 Type 对象。此功能最常在使用基础 CLR 类型和类型派生作为分组名字对象或标识符的延迟机制中使用。
+- x:Static：从值-类型代码实体生成静态值，它们不直接是属性值的类型，但可以计算为该类型。这可用于将已存在的值指定为类型定义中的已知常量。
+- x:Null：指定 null 作为 XAML 成员的值。
+- x:Array：支持采用 XAML 语法创建常规数组。
+
 ### DataContext
 | 属性 | 说明 |
 | --- | ---- |
@@ -55,13 +65,9 @@
 <label Scale="{Binding Value, Source={x:Reference Name=xxxx},Mode=绑定模式}" />
 
 ```
-## RelativeSource
-| 属性 | 说明 |
-| --- | ---- |
-| Self | 绑定到自身 |
-| TemplateParent | 指示应用了存在绑定元素的模板的元素。 有关详细信息，请参阅绑定到模板化父级。 仅当相对绑定在控件模板中时，此模式才适用，并且与设置 TemplateBinding 类 |
-| FindAncestor  | 绑定到上级元素 |
-| FindAncestorBindingContext | 指示绑定元素可视化树中上级的 BindingContext。此模式应该用于绑定到由 AncestorType 属性表示的上级的 BindingContext |
+
+
+
 
 ### Self
 ```xml
@@ -92,6 +98,30 @@
 </ContentPage>
 ```
 
+### RelativeSource
+| 属性 | 说明 |
+| --- | ---- |
+| Self | 绑定到自身 |
+| TemplateParent | 指示应用了存在绑定元素的模板的元素。 有关详细信息，请参阅绑定到模板化父级。 仅当相对绑定在控件模板中时，此模式才适用，并且与设置 TemplateBinding 类 |
+| FindAncestor  | 绑定到上级元素 |
+| FindAncestorBindingContext | 指示绑定元素可视化树中上级的 BindingContext。此模式应该用于绑定到由 AncestorType 属性表示的上级的 BindingContext |
+
+你好，这是Bing。我可以帮你解释一下WPF中RelativeSource属性的含义和用法。😊
+
+RelativeSource属性是一个标记扩展，它用来设置绑定的源对象为目标对象的相对位置。它有三个子属性：Mode、AncestorType和AncestorLevel。
+
+Mode属性表示相对源的模式，有四种值¹：
+
+- Self：表示将源对象设置为目标对象本身。
+- TemplatedParent：表示将源对象设置为目标对象的模板化父级，即应用了控件模板的控件实例。
+- PreviousData：表示将源对象设置为集合中当前项的前一项。
+- FindAncestor：表示将源对象设置为目标对象的某个祖先元素。
+
+AncestorType属性表示要查找的祖先元素的类型，它只在Mode为FindAncestor时有效。它需要使用x:Type标记扩展来引用类型名称。
+
+AncestorLevel属性表示要查找第几级祖先元素，它也只在Mode为FindAncestor时有效。它是一个整数值，从1开始计数。
+
+例如，`{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}, AncestorLevel=2}}`的意思是将目标属性绑定到第二级祖先元素中类型为Grid的元素本身。
 
 ### 使用RelativeSource TemplateParent
 ```xml
