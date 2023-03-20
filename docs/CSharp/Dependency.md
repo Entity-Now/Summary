@@ -47,3 +47,72 @@ public static T? GetService<T>()
     return ActivatorUtilities.GetServiceOrCreateInstance<T>(serviceProvider);
 }
 ```
+
+## 要使用CommunityToolkit实现依赖注入，你需要以下几个步骤：
+
+- 安装CommunityToolkit.Mvvm和Microsoft.Extensions.DependencyInjection两个NuGet包。
+- 在你的应用程序启动时，创建一个IServiceCollection对象，并使用AddSingleton、AddScoped或AddTransient方法注册你需要的服务。
+- 使用BuildServiceProvider方法创建一个IServiceProvider对象，并将其保存为全局变量或属性。
+- 在你的ViewModel类中，添加一个带有所需服务参数的构造函数，并使用Ioc.Default.GetService<T>方法获取服务实例。
+- 在你的View类中，使用Ioc.Default.GetRequiredService<T>方法获取ViewModel实例，并将其设置为DataContext属性。
+
+下面是一个简单的示例³：
+
+```csharp
+// App.xaml.cs
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+
+public partial class App : Application
+{
+    public App()
+    {
+        // Create a new service collection
+        var services = new ServiceCollection();
+
+        // Register your services here
+        services.AddSingleton<IMessageService, MessageService>();
+
+        // Build the service provider
+        IServiceProvider provider = services.BuildServiceProvider();
+
+        // Set it as the default service provider for the MVVM Toolkit Ioc module
+        Ioc.Default.ConfigureServices(provider);
+    }
+}
+
+// MainViewModel.cs
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
+
+public class MainViewModel : ObservableObject
+{
+    private readonly IMessageService _messageService;
+
+    public MainViewModel(IMessageService messageService)
+    {
+        // Get the message service instance from the constructor parameter
+        _messageService = messageService;
+    }
+
+    public void SendMessage(string message)
+    {
+        // Use the message service to send a message
+        _messageService.Send(message);
+    }
+}
+
+// MainWindow.xaml.cs
+using CommunityToolkit.Mvvm.DependencyInjection;
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        // Get the MainViewModel instance from the Ioc module and set it as DataContext
+        DataContext = Ioc.Default.GetRequiredService<MainViewModel>();
+    }
+}
+```
