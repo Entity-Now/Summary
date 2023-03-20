@@ -50,11 +50,11 @@ public static T? GetService<T>()
 
 ## 要使用CommunityToolkit实现依赖注入，你需要以下几个步骤：
 
-- 安装CommunityToolkit.Mvvm和Microsoft.Extensions.DependencyInjection两个NuGet包。
-- 在你的应用程序启动时，创建一个IServiceCollection对象，并使用AddSingleton、AddScoped或AddTransient方法注册你需要的服务。
-- 使用BuildServiceProvider方法创建一个IServiceProvider对象，并将其保存为全局变量或属性。
-- 在你的ViewModel类中，添加一个带有所需服务参数的构造函数，并使用Ioc.Default.GetService<T>方法获取服务实例。
-- 在你的View类中，使用Ioc.Default.GetRequiredService<T>方法获取ViewModel实例，并将其设置为DataContext属性。
+- 安装`CommunityToolkit.Mvvm`和`Microsoft.Extensions.DependencyInjection`两个NuGet包。
+- 在你的应用程序启动时，创建一个`IServiceCollection`对象，并使用`AddSingleton`、`AddScoped`或`AddTransient`方法注册你需要的服务。
+- 使用`BuildServiceProvider`方法创建一个`IServiceProvider`对象，并将其保存为全局变量或属性。
+- 在你的ViewModel类中，添加一个带有所需服务参数的构造函数，并使用`Ioc.Default.GetService<T>`方法获取服务实例。
+- 在你的View类中，使用`Ioc.Default.GetRequiredService<T>`方法获取ViewModel实例，并将其设置为DataContext属性。
 
 下面是一个简单的示例：
 
