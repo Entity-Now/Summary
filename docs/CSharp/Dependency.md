@@ -15,7 +15,7 @@
 
 ## 注入到操作方法 `FromServices`
 > 使用特性`[FromServices]`将依赖属性注入到方法
-```CSharp
+```cs
 public IActionResult About([FromServices] IDateTime dateTime)
 {
     return Content( $"Current server time: {dateTime.Now}");
@@ -23,7 +23,7 @@ public IActionResult About([FromServices] IDateTime dateTime)
 ```
 
 ## WinUI3使用依赖注入
-```CSharp
+```cs
 using Microsoft.Extensions.DependencyInjection;
 // 注册依赖
 private static IServiceProvider ConfigureServices()
@@ -56,9 +56,9 @@ public static T? GetService<T>()
 - 在你的ViewModel类中，添加一个带有所需服务参数的构造函数，并使用Ioc.Default.GetService<T>方法获取服务实例。
 - 在你的View类中，使用Ioc.Default.GetRequiredService<T>方法获取ViewModel实例，并将其设置为DataContext属性。
 
-下面是一个简单的示例³：
+下面是一个简单的示例：
 
-```csharp
+```cs
 // App.xaml.cs
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
