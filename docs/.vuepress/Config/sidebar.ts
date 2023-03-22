@@ -55,7 +55,8 @@ const sidebar:SidebarConfig =  {
             text:'git',
             children:[
                 '/git/readme.md',
-                '/git/action.md'
+                '/git/action.md',
+                "tag.md"
             ]
         }
     ],
