@@ -129,7 +129,7 @@ const sidebar:SidebarConfig =  {
                 },
                 {
                     text:'其他知识',
-                    children:["other.md"]
+                    children:["other.md",'MatchingPattern.md']
                 },
                 {
                     text:'Linq',

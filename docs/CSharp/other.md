@@ -4,22 +4,39 @@
 :::
 
 ## Deconstruct 将元组分解赋值
+在 C# 中，Deconstructor（析构函数）是一种特殊的方法，它可以将一个对象分解为其组成部分，并将这些部分分配给单独的变量。Deconstructor 方法通常与构造函数一起使用，用于创建自定义类型的对象。
+
 ```cs
-class Point
+public class Person
 {
-    public int X { get; }
-    public int Y { get; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Country { get; set; }
 
-    public Point(int x, int y) => (X, Y) = (x, y);
-    // 返回一个元组
-    public void Deconstruct(out int x, out int y) => (x, y) = (X, Y);
+    public Person(string name, int age, string country)
+    {
+        Name = name;
+        Age = age;
+        Country = country;
+    }
+
+    public void Deconstruct(out string name, out int age, out string country)
+    {
+        name = Name;
+        age = Age;
+        country = Country;
+    }
 }
-
-var point = new Point(10, 20);
-// 分解元组
-var (x, y) = point; // deconstruct
-Console.WriteLine(x); // 10
 ```
+在上面的代码中，我们定义了一个名为 Person 的类，该类包含三个属性：Name、Age 和 Country。我们还定义了一个构造函数和一个 Deconstructor 方法，用于将 Person 对象分解为其组成部分。
+
+```cs
+
+Person person = new Person("John", 30, "USA");
+(string name, int age, string country) = person;
+Console.WriteLine($"Name: {name}, Age: {age}, Country: {country}");
+```
+> 在上面的代码中，我们将 Person 对象的值分配给名为 name、age 和 country 的变量，然后将这些变量打印到控制台。
 
 ## dynamic
 ```cs
@@ -38,13 +55,29 @@ dynamic obj2 = new Foundation();
 // 可以直接使用
 Console.WriteLine(obj2.Value);
 ```
-## 反射
 
-## 特性
+### dynamic 访问未知属性
+```cs
+dynamic person = new ExpandoObject();
+person.Name = "John";
+person.Age = 30;
 
-## assembly 动态反射
+string propertyName = "Name";
+Console.WriteLine($"{propertyName}: {person[propertyName]}");
 
-## activate 静态反射
+propertyName = "Age";
+Console.WriteLine($"{propertyName}: {person[propertyName]}");
+
+propertyName = "Address";
+person[propertyName] = "123 Main St";
+Console.WriteLine($"{propertyName}: {person[propertyName]}");
+
+```
+在上面的代码中，我们使用 `dynamic` 对象 `person` 来访问和操作动态属性。首先，我们为 `person` 对象设置了 `Name` 和 `Age` 属性，然后我们使用字符串 `propertyName` 访问 `Name` 和 `Age` `属性的值。此时，propertyName` 变量的值是动态的，可以在运行时更改。
+
+最后，我们通过设置 `person[propertyName]` 的值为字符串 123 Main St，动态地添加了一个名为 `Address` 的属性，并打印出该属性的值。
+
+总之，`dynamic` 可以用于访问和操作动态属性，这使得我们可以轻松地处理动态添加的属性，而无需事先知道它们的名称或类型。
 
 ## 时间戳
 ```csharp
@@ -227,39 +260,54 @@ public class TestAccess
 }
 ```
 
+## 参数关键词`in` and `out`
+- in
+    - in 关键字用于声明一个输入参数。使用 in 关键字修饰的参数只能在方法中读取，不能被修改。这意味着，使用 in 关键字修饰的参数是只读的，可以保护方法中的数据不被意外修改。使用 in 关键字可以提高代码的安全性和可维护性。
+     ```cs
+        public void Print(in int value)
+        {
+            Console.WriteLine($"The value is {value}");
+        }
+    ```
+- out
+    - 使用 out 关键字修饰的参数必须在方法中被初始化，并且必须被方法修改。这意味着，使用 out 关键字修饰的参数是只写的，用于将方法的结果返回给调用方。
+        ```cs
+        public void Divide(int a, int b, out int quotient, out int remainder)
+        {
+            quotient = a / b;
+            remainder = a % b;
+        }
+        ```
+
 ## timer 定时执行任务
 ```csharp
-public class Example
+using System;
+using System.Timers;
+
+public class Program
 {
-   private static System.Timers.Timer aTimer;
-   
-   public static void Main()
-   {
-      SetTimer();
+    private static Timer timer;
 
-      Console.WriteLine("\nPress the Enter key to exit the application...\n");
-      Console.WriteLine("The application started at {0:HH:mm:ss.fff}", DateTime.Now);
-      Console.ReadLine();
-      aTimer.Stop();
-      aTimer.Dispose();
-      
-      Console.WriteLine("Terminating the application...");
-   }
+    public static void Main()
+    {
+        // 创建一个 Timer 实例，并设置其周期为 1 秒
+        timer = new Timer(1000);
 
-   private static void SetTimer()
-   {
-        // Create a timer with a two second interval.
-        aTimer = new System.Timers.Timer(2000);
-        // Hook up the Elapsed event for the timer. 
-        aTimer.Elapsed += OnTimedEvent;
-        aTimer.AutoReset = true;
-        aTimer.Enabled = true;
+        // 定义一个 Elapsed 事件的处理方法
+        timer.Elapsed += OnTimerElapsed;
+
+        // 启动计时器
+        timer.Enabled = true;
+
+        // 防止控制台应用程序在计时器退出时立即关闭
+        Console.ReadLine();
     }
 
-    private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+    private static void OnTimerElapsed(object sender, ElapsedEventArgs e)
     {
-        Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                          e.SignalTime);
+        // 执行需要周期性执行的操作
+        Console.WriteLine($"The time is now {DateTime.Now}");
     }
 }
+
 ```
