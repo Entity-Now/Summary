@@ -163,12 +163,13 @@ const sidebar:SidebarConfig =  {
             ]
         },
         {
-            text:"win ui3",
+            text:"XAML",
             children:[
                 "win_ui_3.md",
                 'CommunityToolKit.Mvvm.md',
                 'Win3UI.md',
-                'Xaml_Element.md'
+                'Xaml_Element.md',
+                "visualTreeHelper.md"
             ]
         },
         {

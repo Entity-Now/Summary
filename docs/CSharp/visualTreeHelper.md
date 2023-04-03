@@ -1,0 +1,10 @@
+# visual tree helper
+
+# visual 介绍
+VisualTreeHelper是一个WPF中的工具类，用于遍历和操作Visual树（Visual Tree），它提供了一组静态方法，用于访问Visual对象的属性和子元素。
+
+在WPF中，所有UI元素都是由Visual对象构成的。Visual对象是一个轻量级对象，用于表示在屏幕上呈现的可视化内容。每个Visual对象都可以包含子元素，这些子元素可以是其他Visual对象，也可以是其他类型的UI元素（如控件）。
+
+VisualTreeHelper类提供了许多静态方法，用于遍历Visual树和访问Visual对象的属性和子元素。例如，您可以使用VisualTreeHelper.GetChild方法获取Visual对象的子元素，使用VisualTreeHelper.GetParent方法获取Visual对象的父元素，使用VisualTreeHelper.GetDescendantBounds方法获取Visual对象的边界框，以及使用VisualTreeHelper.HitTest方法执行命中测试等等。
+
+VisualTreeHelper类通常用于在WPF中执行复杂的UI交互和自定义绘制操作。它提供了一种有效的方式来遍历和操作Visual树，以实现各种高级功能。

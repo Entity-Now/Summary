@@ -111,3 +111,9 @@ backface-visibility: visible|hidden;
 > val < min = min
 >
 > val > max = max
+
+## accent-color
+可以更改input控件的颜色
+
+## text-select
+文本不能选中
