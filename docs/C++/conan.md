@@ -61,7 +61,7 @@ conan install . --output-folder=build --build=missing
 ## 构建
 ```sh
 # 
-came path -G "vs的版本" xxx其他配置
+came path -G "vs的版本"  -DCMAKE_TOOLCHAIN_FILE=你自己的build路径\conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
 
 cmake .. -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE=D:\Languages\conan\build\conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
 ```
