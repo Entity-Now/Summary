@@ -57,6 +57,12 @@ cmake --build . --config Release
 cmake --open src
 ```
 
+## 配置或者生成预设
+> 如果不生成预设，vs编辑器无法打开源文件
+
+vs code编辑器可以按`ctrl+shift+p`输入`Cmake: Select Configure Preset`
+然后选择已有的预设
+
 ## add_subdirectory 添加子文件
 > 该语句会在执行完当前文件夹CMakeLists.txt之后执行src子目录下的CMakeLists.txt
 ```cmake

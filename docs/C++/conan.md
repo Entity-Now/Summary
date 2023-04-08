@@ -73,4 +73,8 @@ cmake .. -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE=D:\Languages\conan\bu
 cmake --build . --config Release
 ```
 
+## 配置预设
+> 需配置预设，否则vs编辑器无法打开源文件
 
+vs code编辑器可以按`ctrl+shift+p`输入`Cmake: Select Configure Preset`
+然后选择已有的预设
