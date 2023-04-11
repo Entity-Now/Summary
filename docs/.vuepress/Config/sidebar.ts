@@ -91,7 +91,8 @@ const sidebar:SidebarConfig =  {
                 '/Vue/vuepress.md',
                 'server.md',
                 'pinia.md',
-                '/markdown/Markdown-it.md'
+                '/markdown/Markdown-it.md',
+                "InterselectionObserver"
             ]
         }
     ],
