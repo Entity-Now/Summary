@@ -170,3 +170,10 @@ foreach (var assembly in assemblies)
     }
 }
 ```
+
+## 各种方法的区别
+`AppDomain.CurrentDomain.GetAssemblies()` 方法返回当前应用程序域加载的所有程序集，包括主程序集和所有已加载的引用程序集。与 `Assembly.GetReferencedAssemblies()` 方法不同的是，它返回的是已经加载到应用程序域中的程序集，而不仅仅是引用的程序集。此外，它还包括动态加载的程序集和本地缓存的程序集。
+
+相比之下，`Assembly.GetReferencedAssemblies()` 和 `Assembly.GetExecutingAssembly()` 方法只返回程序集的元数据信息，并不包括已加载的程序集实例。这意味着，它们只能用于获取程序集的元数据信息，而不能用于获取已加载的程序集实例。
+
+因此，`AppDomain.CurrentDomain.GetAssemblies()` 方法通常用于获取应用程序域加载的所有程序集，以便在运行时对它们进行操作。而 `Assembly.GetReferencedAssemblies()` 和 `Assembly.GetExecutingAssembly()` 方法通常用于获取程序集的元数据信息，例如程序集名称、版本号、公共密钥等。
