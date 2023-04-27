@@ -114,55 +114,16 @@ const sidebar:SidebarConfig =  {
         }
     ],
     '/CSharp/':[
-        {
-            text:'C#入门',
-            children:[
-                {
-                    text:"基础入门",
-                    children:['/CSharp/README.md']
-                },
-                {
-                    text:"Reflection反射",
-                    children:[
-                        'Assembly.md'
-                    ]
-
-                },
-                {
-                    text:'其他知识',
-                    children:["other.md",'MatchingPattern.md']
-                },
-                {
-                    text:'Linq',
-                    children:['/CSharp/Linq.md']
-                },
-                {
-                    text:"xpath",
-                    children:[
-                        "xpath.md"
-                    ]
-                },
-            ]
-        },
-        {
-            text:"WinUI3管理员方式运行",
-            children:[
-                "WinUI3Admin.md"
-            ]
-        },
-        {
-            text:"dotnet",
-            children:[
-                "dotnet.md"
-            ]
-        },
-
-        {
-            text:"asp in linux",
-            children:[
-                "linux_Run.md"
-            ]
-        },
+        "README.md",
+        "other.md",
+        'MatchingPattern.md',
+        'Special.md',
+        "Linq.md",
+        "Assembly.md",
+        "xpath.md",
+        "dotnet.md",
+        "linux_Run.md",
+        "EFcore.md",
         {
             text:"XAML",
             children:[
@@ -170,12 +131,10 @@ const sidebar:SidebarConfig =  {
                 'CommunityToolKit.Mvvm.md',
                 'Win3UI.md',
                 'Xaml_Element.md',
-                "visualTreeHelper.md"
+                "visualTreeHelper.md",
+                "WinUI3Admin.md",
+                "Dependency.md"
             ]
-        },
-        {
-            text:'Dependency依赖关系注入',
-            link:'Dependency.md'
         }
 
     ],
