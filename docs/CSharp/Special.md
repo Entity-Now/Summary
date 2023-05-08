@@ -76,3 +76,71 @@ Stopwatch 类提供了以下属性和方法：
 - `Stop`：停止计时。
 
 需要注意的是，Stopwatch 的精度取决于系统硬件和操作系统，一般情况下可以精确到毫秒或微秒级别，但并不保证绝对的准确性。同时，在多线程环境下使用 Stopwatch 时需要注意同步问题，避免并发访问导致的计时结果错误。
+
+## InterLocked 
+Interlocked 是一个线程安全的类，提供了原子性的操作，用于对某个变量进行自增、自减等操作，避免了多线程环境下因为竞争导致数据不一致的问题。
+
+Interlocked 提供了以下方法：
+
+- `Increment`：对整数变量进行自增操作。
+- `Decrement`：对整数变量进行自减操作。
+- `Exchange`：交换两个变量的值。
+- `CompareExchange`：比较两个变量的值，如果相等就用第三个参数替换第一个参数的值。
+
+使用 Interlocked 可以在多线程环境下对变量进行操作而不会出现数据不一致的情况。通常情况下，我们应该尽量避免使用 Interlocked，因为它的效率不如普通的变量操作。只有在确实需要在多线程环境下操作变量时，才应该使用 Interlocked。
+
+## Parallel
+`Parallel`是一个C#中的并行计算库，可以方便地实现多线程并行计算，提高程序的运行效率。下面是`Parallel`的详细使用方法：
+
+1. 使用`Parallel.ForEach`方法实现并行循环：
+
+   ```csharp
+   Parallel.ForEach(source, item =>
+   {
+       // 这里是循环体
+   });
+   ```
+
+   其中，`source`是需要遍历的集合或数组，`item`是集合或数组中的每一个元素。
+
+2. 使用`Parallel.For`方法实现并行循环：
+
+   ```csharp
+   Parallel.For(0, count, i =>
+   {
+       // 这里是循环体
+   });
+   ```
+
+   其中，`count`是循环次数，`i`是循环变量。
+
+3. 使用`Parallel.Invoke`方法执行多个任务：
+
+   ```csharp
+   Parallel.Invoke(
+       () =>
+       {
+           // 这里是第一个任务
+       },
+       () =>
+       {
+           // 这里是第二个任务
+       },
+       // ...
+   );
+   ```
+
+   该方法可以同时执行多个任务，当所有任务都执行完毕后，该方法才会返回。
+
+4. 设置并行度：
+
+   ```csharp
+   Parallel.ForEach(source, new ParallelOptions { MaxDegreeOfParallelism = 4 }, item =>
+   {
+       // 这里是循环体
+   });
+   ```
+
+   通过设置`ParallelOptions`的`MaxDegreeOfParallelism`属性，可以控制并行度，即同时执行的任务数。
+
+需要注意的是，在使用`Parallel`库时需要谨慎，避免出现线程安全问题。可以使用`Interlocked`类来进行原子操作，避免多线程竞争导致的数据不一致问题。

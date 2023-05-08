@@ -133,7 +133,8 @@ const sidebar:SidebarConfig =  {
                 'Xaml_Element.md',
                 "visualTreeHelper.md",
                 "WinUI3Admin.md",
-                "Dependency.md"
+                "Dependency.md",
+                "WebView2.md"
             ]
         }
 
