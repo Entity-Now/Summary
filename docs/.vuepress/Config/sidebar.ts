@@ -117,6 +117,7 @@ const sidebar:SidebarConfig =  {
         "README.md",
         "other.md",
         'MatchingPattern.md',
+        "PatternMatching.md",
         'Special.md',
         "Linq.md",
         "Assembly.md",
@@ -124,6 +125,8 @@ const sidebar:SidebarConfig =  {
         "dotnet.md",
         "linux_Run.md",
         "EFcore.md",
+        "updataList.md",
+        "FormatString.md",
         {
             text:"XAML",
             children:[
