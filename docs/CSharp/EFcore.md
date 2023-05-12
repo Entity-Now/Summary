@@ -234,3 +234,84 @@ using (var transaction = context1.Database.BeginTransaction())
 在这个例子中，我们使用了两个数据库上下文来执行一个分布式事务，我们可以使用事务对象来控制这两个上下文中的操作，并在最后一起提交或回滚。
 
 总之，EF Core提供了许多进阶的事务用法，例如保存点、并发控制和分布式事务，这些用法可以让我们更加灵活地处理事务，并实现更高效的数据库操作。在使用这些进阶用法时，我们需要根据具体的业务场景选择合适的方式，并遵循最佳实践，以保证事务的正确性和高效性。
+
+## 并发
+ConcurrencyCheck是EF Core中一种用于处理并发冲突的机制。当一个实体被标记为ConcurrencyCheck时，EF Core在更新该实体时将检查该实体的所有属性是否与数据库中的当前值匹配。如果实体的属性值与数据库中的值不匹配，EF Core将抛出DbUpdateConcurrencyException异常，表示存在并发冲突。
+
+使用ConcurrencyCheck的好处是，它可以避免使用显式锁或事务来处理并发访问。它还可以提高性能，因为它不会阻止其他操作并发地访问数据库。在处理轻量级并发冲突时，ConcurrencyCheck是一种有效的方法。
+
+在使用ConcurrencyCheck时，我们通常需要为实体定义一个特定的字段或属性，并将其标记为ConcurrencyCheck。该字段通常是一个时间戳（Timestamp）字段或整数类型的版本号字段，用于跟踪实体的修改时间或版本号。当更新实体时，EF Core会自动将ConcurrencyCheck字段包含在更新语句中，并在提交更新时检查该字段的值。
+
+下面是一个示例代码，展示如何在EF Core中使用ConcurrencyCheck来处理并发冲突：
+
+```csharp
+public class Order
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Amount { get; set; }
+    
+    [ConcurrencyCheck]
+    public byte[] Timestamp { get; set; }
+}
+
+// 更新订单
+public async Task UpdateOrder(int orderId, Order newOrder)
+{
+    var existingOrder = await dbContext.Orders.FindAsync(orderId);
+    if (existingOrder == null)
+    {
+        throw new ArgumentException("订单不存在");
+    }
+    
+    // 将现有订单的属性设置为新订单的属性
+    existingOrder.Name = newOrder.Name;
+    existingOrder.Amount = newOrder.Amount;
+    
+    // 保存更改
+    try
+    {
+        await dbContext.SaveChangesAsync();
+    }
+    catch (DbUpdateConcurrencyException ex)
+    {
+        // 处理并发冲突
+        foreach (var entry in ex.Entries)
+        {
+            if (entry.Entity is Order)
+            {
+                var clientValues = (Order)entry.Entity;
+                var databaseEntry = entry.GetDatabaseValues();
+                if (databaseEntry == null)
+                {
+                    throw new ArgumentException("订单不存在");
+                }
+                
+                var databaseValues = (Order)databaseEntry.ToObject();
+                
+                // 检查并处理并发冲突
+                if (clientValues.Timestamp != databaseValues.Timestamp)
+                {
+                    throw new Exception("订单已被修改，请重新加载");
+                }
+            }
+            else
+            {
+                throw new NotSupportedException(
+                    $"Concurrency check 不支持类型 {entry.Entity.GetType().Name}");
+            }
+        }
+    }
+}
+```
+
+在上面的示例中，Order实体的Timestamp属性被标记为ConcurrencyCheck。当更新订单时，如果数据库中的Timestamp值与客户端提供的值不匹配，则会抛出DbUpdateConcurrencyException异常。在处理此异常时，代码会从数据库中重新获取实体，并检查客户端提供的值是否与数据库中的值匹配。如果不匹配，则抛出异常，表示存在并发冲突。
+
+### 使用Timestamp与ConcurrencyCheck的区别是什么
+在 EF Core 中，使用 Timestamp 和 ConcurrencyCheck 标记实体属性可以用来解决并发访问和冲突的问题。它们之间的区别如下：
+
+1. Timestamp：Timestamp 属性标记一个二进制数组（byte[]），它存储了实体最后一次保存到数据库的时间戳信息。这个时间戳可以自动更新，通常使用 SQL Server 提供的 rowversion 类型，或者通过手动更新来实现。当使用 Timestamp 标记实体属性时，EF Core 在更新实体时，会检查数据库中保存的时间戳是否与当前实体的时间戳匹配。如果不匹配，则会抛出 DbUpdateConcurrencyException 异常，表示存在并发冲突。
+
+2. ConcurrencyCheck：ConcurrencyCheck 属性标记一个实体属性，表示该属性需要进行并发检查。在 EF Core 中，ConcurrencyCheck 可以用于任何属性类型。当使用 ConcurrencyCheck 标记实体属性时，EF Core 在更新实体时，会检查数据库中保存的属性值是否与当前实体的属性值匹配。如果不匹配，则会抛出 DbUpdateConcurrencyException 异常，表示存在并发冲突。
+
+总的来说，Timestamp 与 ConcurrencyCheck 的区别在于它们检查并发冲突的方式不同。Timestamp 检查的是时间戳是否匹配，而 ConcurrencyCheck 检查的是属性值是否匹配。在选择使用哪种方式时，需要考虑实体中哪些属性可能导致并发访问和冲突的问题，并选择合适的方式来解决。通常情况下，Timestamp 适用于多用户同时访问并更新同一个实体的情况，而 ConcurrencyCheck 适用于不同的实体可能会被同时更新的情况。
