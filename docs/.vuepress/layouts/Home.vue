@@ -23,7 +23,7 @@ const OpenModal = function (Selected: number = 0): void {
     <Snowflake id="CanvasDom">
       <div class="Content">
         <div class="avatar">
-          <img src="/image/avatar.jpg" alt="头像" />
+          <img src="/image/avatar.png" alt="头像" />
         </div>
         <div class="describe">
           <h1>Entity的个人博客</h1>
