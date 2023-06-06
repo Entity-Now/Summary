@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-704255db","path":"/typescript/union.html","title":"联合类型","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1686021323000,"contributors":[{"name":"Entity-Now","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"typescript/union.md"}');export{t as data};

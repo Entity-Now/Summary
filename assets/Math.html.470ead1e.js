@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-9e196238","path":"/js/Math.html","title":"Math对象","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1686021323000,"contributors":[{"name":"Entity-Now","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"js/Math.md"}');export{t as data};

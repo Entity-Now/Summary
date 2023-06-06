@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-37d00ff0","path":"/typescript/function.html","title":"函数","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1686021323000,"contributors":[{"name":"Entity-Now","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"typescript/function.md"}');export{t as data};

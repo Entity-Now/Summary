@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-134daec4","path":"/css/scss.html","title":"scss","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[{"level":2,"title":"安装","slug":"安装","link":"#安装","children":[]}],"git":{"updatedTime":1686021323000,"contributors":[{"name":"Entity-Now","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"css/scss.md"}');export{t as data};
