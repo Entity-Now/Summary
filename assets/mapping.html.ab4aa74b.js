@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-0ab822fc","path":"/typescript/mapping.html","title":"索引类型","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1686021323000,"contributors":[{"name":"Entity-Now","email":"2966388213@qq.com","commits":1}]},"filePathRelative":"typescript/mapping.md"}');export{t as data};
