@@ -13,18 +13,20 @@ background: url(xxx.jpg) no-repeat 0% 0%/100% 100%,url(xxx.png) 是否重复 x y
 ```
 
 ## z-index 层级关系
-> ::before伪元素
+::: tip
+当一个元素的子元素无法设置层级关系时，可以将父元素的position设置为relative，这样浏览器会新建一个层级 使子元素应用在新的层级中
+:::
 ```css
 .parent{
     /** 此处是为了新建层叠 */
     position:relative;
     z-index:0;
 }
-.div{
+.child{
     /** xxx */
     position:relative;
 }
-.div::before{
+.child::before{
     content:'';
     position:absolute;
     /** 直接设置z-index是无效的，设置值为-1则调出到父级层级 */

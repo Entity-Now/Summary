@@ -99,6 +99,7 @@ export default sidebar({
       {
           text:'css',
           children:[
+              "README.md",
               '/css/flex.md',
               '/css/scss.md',
               'scroll.md',
