@@ -167,7 +167,9 @@ export default sidebar({
       {
           text:'kotlin入门',
           children:[
-              '/kotlin/README.md'
+              '/kotlin/README.md',
+              "reflex.md",
+              "other.md"
           ]
       }
   ],
