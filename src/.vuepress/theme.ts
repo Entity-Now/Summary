@@ -92,7 +92,11 @@ export default hopeTheme({
       vPre: true,
       vuePlayground: true,
     },
-
+    components: {
+      components:[
+        'VideoPlayer'
+      ]
+    }
     // uncomment these if you want a pwa
     // pwa: {
     //   favicon: "/favicon.ico",
