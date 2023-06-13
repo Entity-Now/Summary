@@ -163,16 +163,7 @@ export default sidebar({
           ]
       }
   ],
-  '/kotlin/':[
-      {
-          text:'kotlin入门',
-          children:[
-              '/kotlin/README.md',
-              "reflex.md",
-              "other.md"
-          ]
-      }
-  ],
+  '/kotlin/':"structure",
   '/CSharp/':[
       "README.md",
       "other.md",
