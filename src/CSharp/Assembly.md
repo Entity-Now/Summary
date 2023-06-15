@@ -1,5 +1,30 @@
 # Assembly反射
 
+## 反射api的区别
+以下是`AppDomain.CurrentDomain.GetAssemblies()`、`Assembly.GetReferencedAssemblies()`和`Assembly.GetExecutingAssembly()`三个方法的区别及简要描述的表格：
+
+| 方法                          | 区别和描述                                                                                                                   |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| `AppDomain.CurrentDomain.GetAssemblies()` | 返回当前应用程序域中加载的所有程序集。                                                                                         |
+| `Assembly.GetReferencedAssemblies()`     | 返回当前程序集引用的所有外部程序集。                                                                                         |
+| `Assembly.GetExecutingAssembly()`        | 返回当前正在执行的代码所在的程序集。                                                                                         |
+
+**描述：**
+
+1. `AppDomain.CurrentDomain.GetAssemblies()`
+   - 描述：返回当前应用程序域中加载的所有程序集。
+   - 区别：该方法返回当前应用程序域中加载的所有程序集，包括主应用程序集和任何被动态加载或引用的附加程序集。
+
+2. `Assembly.GetReferencedAssemblies()`
+   - 描述：返回当前程序集引用的所有外部程序集。
+   - 区别：该方法返回当前程序集所引用的其他程序集的清单信息。这些被引用的程序集可能包括直接引用的程序集、传递引用的程序集以及在编译时需要但在运行时可能被动态加载的程序集。
+
+3. `Assembly.GetExecutingAssembly()`
+   - 描述：返回当前正在执行的代码所在的程序集。
+   - 区别：该方法返回包含当前正在执行的代码的程序集，即当前线程中正在执行的方法所在的程序集。它通常用于获取运行时信息或进行反射操作。
+
+这些方法在获取程序集信息时具有不同的用途。`GetAssemblies()`返回应用程序域中加载的所有程序集，`GetReferencedAssemblies()`返回当前程序集引用的外部程序集，而`GetExecutingAssembly()`返回当前执行的代码所在的程序集。
+
 ## 使用Assembly.LoadFrom加载程序集
  LoadFrom()方法可以从指定文件中加载程序集
 ```cs
@@ -170,10 +195,3 @@ foreach (var assembly in assemblies)
     }
 }
 ```
-
-## 各种方法的区别
-`AppDomain.CurrentDomain.GetAssemblies()` 方法返回当前应用程序域加载的所有程序集，包括主程序集和所有已加载的引用程序集。与 `Assembly.GetReferencedAssemblies()` 方法不同的是，它返回的是已经加载到应用程序域中的程序集，而不仅仅是引用的程序集。此外，它还包括动态加载的程序集和本地缓存的程序集。
-
-相比之下，`Assembly.GetReferencedAssemblies()` 和 `Assembly.GetExecutingAssembly()` 方法只返回程序集的元数据信息，并不包括已加载的程序集实例。这意味着，它们只能用于获取程序集的元数据信息，而不能用于获取已加载的程序集实例。
-
-因此，`AppDomain.CurrentDomain.GetAssemblies()` 方法通常用于获取应用程序域加载的所有程序集，以便在运行时对它们进行操作。而 `Assembly.GetReferencedAssemblies()` 和 `Assembly.GetExecutingAssembly()` 方法通常用于获取程序集的元数据信息，例如程序集名称、版本号、公共密钥等。

@@ -164,35 +164,7 @@ export default sidebar({
       }
   ],
   '/kotlin/':"structure",
-  '/CSharp/':[
-      "README.md",
-      "other.md",
-      'MatchingPattern.md',
-      "PatternMatching.md",
-      'Special.md',
-      "Linq.md",
-      "Assembly.md",
-      "xpath.md",
-      "dotnet.md",
-      "linux_Run.md",
-      "EFcore.md",
-      "updataList.md",
-      "FormatString.md",
-      {
-          text:"XAML",
-          children:[
-              "win_ui_3.md",
-              'CommunityToolKit.Mvvm.md',
-              'Win3UI.md',
-              'Xaml_Element.md',
-              "visualTreeHelper.md",
-              "WinUI3Admin.md",
-              "Dependency.md",
-              "WebView2.md"
-          ]
-      }
-
-  ],
+  '/CSharp/':"structure",
   "/other/":[
       {
           text:'Seo推广',
