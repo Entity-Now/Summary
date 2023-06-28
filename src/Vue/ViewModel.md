@@ -4,6 +4,21 @@
 -->
 # 双相绑定
 
+:::tip
+```js
+const { value } = defineProps(['value'])
+```
+
+当我们将props对象解构为单独的变量时，这些变量就不再是响应式的了。这是因为解构操作会将变量与原始的props对象断开联系，导致变量不再具有响应式。
+> 下面是正确的做法
+
+```js
+const props = defineProps(['value'])
+const { value } = toRefs(props);
+```
+
+:::
+
 ## vue3 双相绑定
 子组件
 ```html
