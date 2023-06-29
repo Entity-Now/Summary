@@ -1,0 +1,22 @@
+import{_ as s}from"./plugin-vue_export-helper-c27b6911.js";import{o as e,c as n,a}from"./app-75adbfbc.js";const c={},d=a(`<h1 id="css" tabindex="-1"><a class="header-anchor" href="#css" aria-hidden="true">#</a> css</h1><h2 id="选择器" tabindex="-1"><a class="header-anchor" href="#选择器" aria-hidden="true">#</a> 选择器</h2><ol><li>元素选择器：选择指定元素的所有实例。例如，<code>div</code>选择器选择所有<code>&lt;div&gt;</code>元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2"><li>类选择器：选择具有指定类名的元素。类名以<code>.</code>开头。例如，<code>.container</code>选择器选择具有<code>class=&quot;container&quot;</code>属性的元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">.container</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3"><li>ID选择器：选择具有指定ID的元素。ID以<code>#</code>开头。例如，<code>#header</code>选择器选择具有<code>id=&quot;header&quot;</code>属性的元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">#header</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="4"><li>后代选择器：选择指定元素内的后代元素。使用空格表示嵌套关系。例如，<code>ul li</code>选择器选择所有<code>&lt;ul&gt;</code>元素内的<code>&lt;li&gt;</code>元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">ul li</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="5"><li>子元素选择器：选择指定元素的直接子元素。使用<code>&gt;</code>表示直接子元素关系。例如，<code>.container &gt; p</code>选择器选择<code>.container</code>元素下的直接子级<code>&lt;p&gt;</code>元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">.container &gt; p</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="6"><li>相邻兄弟选择器：选择指定元素后面相邻的兄弟元素。使用<code>+</code>表示相邻兄弟元素关系。例如，<code>.box + .box</code>选择器选择<code>.box</code>元素后面相邻的具有相同类名的<code>.box</code>元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">.box + .box</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="7"><li>通用兄弟选择器：选择指定元素后面的所有兄弟元素。使用<code>~</code>表示通用兄弟元素关系。例如，<code>.box ~ .box</code>选择器选择<code>.box</code>元素后面所有具有相同类名的<code>.box</code>元素。</li></ol><div class="language-css line-numbers-mode" data-ext="css"><pre class="language-css"><code><span class="token selector">.box ~ .box</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 样式规则 */</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这些是一些常见的CSS选择器及其用法。选择器的组合和使用可以根据具体需求进行灵活组织和调整。注意在编写CSS样式时，选择器的优先级和特定的HTML结构都需要考虑。</p>`,17),i=[d];function o(l,t){return e(),n("div",null,i)}const p=s(c,[["render",o],["__file","index.html.vue"]]);export{p as default};
