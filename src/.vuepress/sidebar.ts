@@ -62,22 +62,7 @@ export default sidebar({
       collapsible: true,
     }
   ],
-  '/js/':[
-    {
-        text:'JavaScript',
-        children:[
-            '/js/README.md',
-            '/js/Math.md',
-            '/js/CircleCollision.md',
-            '/js/canvasClock.md',
-            '/js/canvas.md',
-            'canvasPieChart.md',
-            'dom.md',
-            'IntersectionObserver.md',
-            'event.md'
-        ]
-    }
-  ],
+  '/js/':"structure",
   '/C++/':[
       {
           text:'C++',
