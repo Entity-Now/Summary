@@ -80,19 +80,7 @@ export default sidebar({
           ]
       }
   ],
-  '/css/':[
-      {
-          text:'css',
-          children:[
-              "README.md",
-              '/css/flex.md',
-              '/css/scss.md',
-              'scroll.md',
-              'other.md',
-              'grid.md'
-          ]
-      }
-  ],
+  '/css/':'structure',
   '/git/':[
       {
           text:'git',
