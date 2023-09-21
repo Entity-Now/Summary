@@ -1,4 +1,4 @@
-# 使用CmakeToolChain构建项目
+# 使用CmakeToolChain快速创建包
 
 ## 创建项目
 ```sh

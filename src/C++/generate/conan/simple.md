@@ -1,18 +1,26 @@
 # 简单使用
 
 ## 配置CMakeLists.txt文件
-```cmake
+```sh
 cmake_minimum_required(VERSION 3.26.0)
 
-PROJECT(ConanTest)
-# 寻找ZLIB库
-find_package(ZLIB REQUIRED)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# 设置包的存放路径，否则cmake找不到
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/build/generators")
+# 寻找目录和子目录下所有的cpp文件
+file(GLOB_RECURSE ALL_SOURCE "*.cpp" "*.c")
+file(GLOB_RECURSE ALL_HEAD "*.hpp" "*.h")
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+# 查找fmt库
+find_package(fmt REQUIRED CONFIG)
+find_package(rmlui REQUIRED CONFIG)
+PROJECT(MemoryWord CXX)
 
-# 链接ZLIB库，这里的变量（ZLIB_LIBRARIES）在ZBIBconfig.cmake里面
-# 变量PROJECT_NAME是项目名称
-target_link_libraries(${PROJECT_NAME} ${ZLIB_LIBRARIES})
+add_executable(MemoryWord ${ALL_SOURCE} ${ALL_HEAD})
+# 链接
+target_link_libraries(MemoryWord fmt::fmt)
+target_link_libraries(MemoryWord rmlui::rmlui)
+
 ```
 
 
@@ -65,27 +73,25 @@ conan install .
 ```
 
 ## 构建
-```
-cmake --preset conan-releasecmake --build --preset conan-release
-```
-
-:::tip
-下面的代码好像过时了
-:::
-
-## 构建
 ```sh
-# 
-came path -G "vs的版本"  -DCMAKE_TOOLCHAIN_FILE=你自己的build路径\conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
-
-cmake .. -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE=D:\Languages\conan\build\conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
+conan install .
+conan install . -s build_type=Debug
 ```
-![conan](/images/Conan.png)
 
-## 生成
+## 构建项目
+
+### debug
 ```sh
-# 此命令在build目录里面执行
-cmake --build . --config Release
+cmake --preset conan-debug
+cmake --build --preset conan-debug
+```
+
+### release
+```sh
+# 构建release版本配置
+cmake --preset conan-release
+# 生成Release项目
+cmake --build --preset conan-release
 ```
 
 ## 配置预设
