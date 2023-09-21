@@ -25,21 +25,46 @@ int main(void) {
 ## premake5 脚本
 ```lua
 -- premake5.lua
-workspace "HelloWorld" -- 解决方案名称
-   configurations { "Debug", "Release" } -- 定义配置
+workspace "MemorizingWords"
+    configurations { "Debug", "Release" }
+    startproject "MemorizingWords"  -- 启动项目
+    architecture "x64" -- 系统架构
+    cppdialect "c++17" -- 方言
 
-project "HelloWorld" -- 项目名
-   kind "ConsoleApp" -- 类型
-   language "C"      -- c语言
-   targetdir "bin/%{cfg.buildcfg}"
+project "MemorizingWords"
+    kind "ConsoleApp"
+    language "C++"
+    -- 设置obj文件的输出目录
+    objdir "bin/%{cfg.platform}_%{cfg.buildcfg}"
+    -- 设置编译文件的输出目录
+    targetdir "bin/%{cfg.buildcfg}"
+    -- 设置源文件等
+    files{
+        "src/**.h",
+        "src/**.cpp",
+        --[[ ImGui ]] --
+        "vendor/imgui/**.h",
+        "vendor/imgui/**.cpp",
+    }
+    -- 包含头文件的路径
+    includedirs {
+        "vendor"
+    }
+    links {
+        "d3d12",
+        "d3dcompiler",
+        "dxgi"
+    }
+    filter "configurations:Debug"
+        defines { "DEBUG" }
+        runtime "Debug" -- 运行环境
+        optimize "On" -- 指定项目配置时使用的优化级别
+        symbols "On" -- 构建时生成调试符号
 
-   files { "**.h", "**.c" } -- 包含的文件
-
-   filter "configurations:Debug" -- 配置
-      defines { "DEBUG" }   -- 定义
-      symbols "On"  -- 
-
-   filter "configurations:Release"
-      defines { "NDEBUG" }
-      optimize "On"
+    filter "configurations:Release"
+        defines { "NDEBUG" }
+        runtime "Release"
+        optimize "On"
+        symbols "Off" -- 不生成调试符号
+ 
 ```
