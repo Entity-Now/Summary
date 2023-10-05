@@ -192,5 +192,6 @@ export default sidebar({
               'README.md'
           ]
       }
-  ]
+  ],
+  "/Math":"structure"
 });

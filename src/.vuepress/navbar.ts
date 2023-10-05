@@ -36,9 +36,6 @@ export default navbar([
     text:"其他",
     children:[
       "/git",
-      "/C++/vcpkg.md",
-      "/C++/conan.md",
-      "/C++/cmake.md",
       "/markdown/",
       "/markdown/Markdown-it.md",
       "/other/calculation.md",
