@@ -6,6 +6,7 @@
 让我们通过一个例子来理解这个概念。假设我们有一个博客系统，其中有两个实体类型：Post（帖子）和Tag（标签）。一个帖子可以有多个标签，一个标签也可以被多个帖子使用，这就形成了一个多对多的关系。在数据库中，我们不能直接表示这种关系，需要引入一个联接实体类型，比如叫做PostTag。PostTag中包含两个外键，一个指向Post，一个指向Tag。每一个PostTag实体都表示一个帖子和一个标签之间的关联。
 以下是这个例子的代码表示：
 
+```
 public class Post 
 {
     public int Id { get; set; }
@@ -25,6 +26,7 @@ public class PostTag
     public Post Post { get; set; }
     public Tag Tag { get; set; }
 }
+```
 
 在这个例子中，PostTag就是我们的联接实体类型，它包含了两个外键PostsId和TagsId，分别指向Post和Tag。这样，我们就可以通过PostTag来表示Post和Tag之间的多对多关系了。。
 
