@@ -39,3 +39,11 @@ MediatR是一个无依赖的进程内消息传递库，支持请求/响应、命
 是一个自动转换类型的库
 
 ## Collections.pooled
+代替原生集合的库，速度更快
+
+## EFCoreSecondLevelCacheInterceptor
+一个EF Core的缓存拦截器，用于在EF Core中使用Second Level Cache
+
+
+## Hangfire
+一个后台任务调度的库
