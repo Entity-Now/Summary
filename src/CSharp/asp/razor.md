@@ -1,9 +1,9 @@
 # razor 语法
 
 ## `@:` 显式行转换
-显式行转换是一种在Razor代码块中使用@:符号来显示HTML文本的方法。它可以让你在C#代码中嵌入HTML内容，而不需要使用<text>标签或其他HTML标记。例如：
+显式行转换是一种在Razor代码块中使用`@:`符号来显示HTML文本的方法。它可以让你在C#代码中嵌入HTML内容，而不需要使用`<text>`标签或其他HTML标记。例如：
 
-```CS
+```cs
 @for (var i = 0; i < people.Length; i++)
 {
   var person = people[i];
@@ -11,7 +11,7 @@
 }
 ```
 
-这段代码会在每次循环时输出人的名字，而不会被视为C#代码。如果不使用@:符号，这段代码会在运行时出错，因为Razor无法识别Name:这个字符串。
+这段代码会在每次循环时输出人的名字，而不会被视为C#代码。如果不使用`@:`符号，这段代码会在运行时出错，因为Razor无法识别`Name:`这个字符串。
 
 ## `@attribute`
 @attribute指令是一种在Razor文件中添加自定义属性的方法。它可以用于给生成的页面或视图的类添加特性，例如[Authorize]或[Route]等。它也可以用于在Razor组件中提供基于常量的路由模板，例如[Route("/counter")]等。
@@ -32,10 +32,10 @@
 这样，这个组件就可以通过/counter这个路径访问。
 
 
-## `@functions` | '@code
-@functions和@code都是razor语法中的指令，可以用来在页面或组件中添加C#成员（字段、属性和方法）。它们的语法如下：
+## `@functions` | `@code`
+`@functions`和`@code`都是razor语法中的指令，可以用来在页面或组件中添加C#成员（字段、属性和方法）。它们的语法如下：
 
-```razor
+```cs
 @functions {
   // C# members
 }
@@ -46,11 +46,11 @@
 ```
 
 它们的区别主要有以下两点：
-- @functions指令只能用在ASP.NET网页中，而@code指令可以用在ASP.NET网页和razor组件中。对于razor组件，@code是@functions的别名，建议优先使用@code。
-- @functions指令只能出现一次，而@code指令可以出现多次。如果在一个页面或组件中使用多个@functions指令，会导致编译错误。
-下面是一个使用@code指令的示例，它定义了一个名为Counter的razor组件，它有一个属性CurrentCount和一个方法IncrementCount：
+- `@functions`指令只能用在ASP.NET网页中，而`@code`指令可以用在ASP.NET网页和razor组件中。对于razor组件，`@code`是`@functions`的别名，建议优先使用`@code`。
+- `@functions`指令只能出现一次，而`@code`指令可以出现多次。如果在一个页面或组件中使用多个@functions指令，会导致编译错误。
+下面是一个使用`@code`指令的示例，它定义了一个名为Counter的razor组件，它有一个属性CurrentCount和一个方法IncrementCount：
 
-```razor
+```cs
 @page "/counter"
 
 <h1>Counter</h1>
@@ -78,7 +78,7 @@
 其中interfaceName是要实现的接口的名称。你可以在一个razor文件中使用多个“@implements”指令来实现多个接口，但是你不能使用“@implements”指令来继承类，因为C#不支持多重继承。如果你想继承类，你可以使用“@inherits”指令，但是你只能继承一个类。
 你可以在“@functions”或“@code”指令中提供接口成员的实现，例如：
 
-```
+```cs
 @implements IMyInterface
 
 @code {
@@ -90,16 +90,16 @@
 
 这段代码实现了一个名为IMyInterface的接口，该接口定义了一个名为MyMethod的方法。
 
-## ·@inherits·
+## `@inherits`
 `@inherits`指令是一种在razor文件中继承类的方法。类是一种定义数据和行为的模板，可以用来创建对象。继承类的类可以使用基类的成员，并且可以添加或重写自己的成员。这样可以实现代码的复用和扩展。
 @inherits指令的语法如下：
 
 `@inherits [className]`
 
 其中className是要继承的类的名称。你可以在一个razor文件中使用一个`@inherits`指令来继承一个类，但是你不能使用多个`@inherits`指令来继承多个类，因为C#不支持多重继承。如果你想实现多个接口，你可以使用@implements指令，但是你只能实现一个类。
-你可以在@functions或@code指令中使用基类的成员，或者添加或重写自己的成员，例如：
+你可以在`@functions`或`@code`指令中使用基类的成员，或者添加或重写自己的成员，例如：
 
-```
+```cs
 @inherits ViewBase
 
 @this.Html.CheckBox ()
@@ -145,14 +145,14 @@
 
 这样，你就可以在页面中使用Model属性来访问Student对象的属性和方法，例如：
 
-```
+```razor
 <p>Student Name: @Model.Name</p>
 <p>Student Age: @Model.Age</p>
 ```
 
 要使用@model指令，你需要先在控制器中传递模型对象给视图。你可以使用View方法的第二个参数来传递模型对象，例如：
 
-```
+```cs
 public IActionResult Index()
 {
     var student = new Student
@@ -183,11 +183,13 @@ public IActionResult Index()
 这样，这个页面就会在客户端呈现，并且可以与用户交互。
 要使用@rendermode指令，你需要先在应用的服务容器中注册服务。你可以在Program文件中使用builder.Services来添加服务，例如：
 
-`builder.Services.AddRazorComponents()
+```cs
+builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
-    .AddInteractiveWebAssemblyComponents();`
+    .AddInteractiveWebAssemblyComponents();
+```
 
-### `StaticServer、InteractiveServer、InteractiveWebAssembly或InteractiveAuto的区别`
+### `StaticServer、InteractiveServer、InteractiveWebAssembly`或`InteractiveAuto`的区别
 
 这些都是Blazor Web应用中的呈现模式，它们决定了组件使用的托管模型、呈现位置以及是否是交互式的。下面是一个简单的对比表格：
 
@@ -256,9 +258,12 @@ Razor 中的 `@preserveshitespace` 指令是用来控制 Razor 引擎在编译 R
 Razor 中的 @section 指令是用来在视图中定义一些可替换的内容区域的。这些内容区域可以在布局文件中通过 @RenderSection 方法来渲染。这样，我们可以在布局文件中预留一些位置，让不同的视图可以根据需要填充不同的内容，比如脚本、样式、侧边栏等。
 @section 指令的语法如下：
 
-`@section SectionName {
+```cs
+@section SectionName {
     // Razor 代码或 HTML 内容
-}`
+}
+```
+
 
 其中，SectionName 是一个字符串，表示内容区域的名称。我们可以在一个视图中定义多个不同名称的 @section，但是同一个名称的 @section 只能定义一次。@section 指令必须放在视图的顶层，不能嵌套在其他代码块中。
 在布局文件中，我们可以使用 @RenderSection 方法来渲染视图中定义的 @section。@RenderSection 方法的语法如下：
@@ -283,7 +288,7 @@ Razor 中的 @section 指令是用来在视图中定义一些可替换的内容�
 
 然后，我们有一个视图 Index.cshtml，它使用了这个布局文件，并且定义了一个 @section Scripts，用来提供一些脚本内容：
 
-```CS
+```cs
 @{
     Layout = "_Layout.cshtml";
 }
@@ -344,7 +349,9 @@ Razor 中的 @section 指令是用来在视图中定义一些可替换的内容�
   public List<T> Items{get;set;}
 }
 ```
+
 > 使用组件
+
 ```
 <MyComponent T="MyClass" Items="xxx" />
 ```
