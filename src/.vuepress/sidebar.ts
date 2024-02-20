@@ -27,6 +27,13 @@ export default sidebar({
       collapsible: true,
     },
     {
+        text: "SQL",
+        icon: "laptop-code",
+        prefix: "SQL/",
+        children: "structure",
+        collapsible: true
+    },
+    {
       text:"kotlin",
       icon: "laptop-code",
       prefix: "kotlin/",

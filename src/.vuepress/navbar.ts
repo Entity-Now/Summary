@@ -35,6 +35,7 @@ export default navbar([
   {
     text:"其他",
     children:[
+      "/SQL",
       "/git",
       "/markdown/",
       "/markdown/Markdown-it.md",
