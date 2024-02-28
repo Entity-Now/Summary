@@ -17,3 +17,106 @@
    - 示例：`SELECT * FROM table_name; SELECT ROW_COUNT();`
 
 总的来说，`ROW_NUMBER()` 是一个用于为查询结果集中的每一行分配行号的窗口函数，而 `ROW_COUNT()` 是一个用于获取最近一次 SQL 语句影响的行数的函数。它们在功能和用途上有很大的区别。
+
+## CASE
+`CASE` 在 SQL 中有多种用法，主要用于条件性的逻辑判断和返回不同的结果。以下是一些常见的 `CASE` 语句的用法：
+
+1. **简单 CASE 表达式**：用于对单个表达式进行等值比较，类似于多个 `IF-THEN` 语句。
+   ```sql
+   CASE expression
+      WHEN value1 THEN result1
+      WHEN value2 THEN result2
+      ...
+      ELSE result_else
+   END
+   ```
+
+2. **搜索 CASE 表达式**：用于对多个条件进行逐一判断，类似于多个 `IF-THEN-ELSE` 语句。
+   ```sql
+   CASE
+      WHEN condition1 THEN result1
+      WHEN condition2 THEN result2
+      ...
+      ELSE result_else
+   END
+   ```
+
+3. **CASE 后带聚合函数**：可以在 `CASE` 语句内使用聚合函数。
+   ```sql
+   SELECT 
+      ID,
+      CASE 
+         WHEN COUNT(*) > 10 THEN 'High'
+         ELSE 'Low'
+      END AS QuantityStatus
+   FROM TableName
+   GROUP BY ID;
+   ```
+
+4. **CASE 用于更新数据**：可以在 `UPDATE` 语句中使用 `CASE`。
+   ```sql
+   UPDATE TableName
+   SET Status = 
+      CASE 
+         WHEN Condition1 THEN 'Active'
+         WHEN Condition2 THEN 'Inactive'
+         ELSE 'Unknown'
+      END;
+   ```
+
+这些是 `CASE` 语句的一些常见用法，可以根据具体情况选择合适的形式来进行条件判断和结果返回。
+
+## UNION
+
+`UNION` 是 SQL 中用于合并两个或多个 `SELECT` 语句的结果集的操作符。它的一般语法为：
+
+```sql
+SELECT column1, column2, ...
+FROM table1
+WHERE condition
+UNION
+SELECT column1, column2, ...
+FROM table2
+WHERE condition;
+```
+
+以下是一些常见的 `UNION` 的用法：
+
+1. **合并两个表的结果集**：将两个表的结果集合并成一个结果集。
+   ```sql
+   SELECT column1, column2 FROM table1
+   UNION
+   SELECT column1, column2 FROM table2;
+   ```
+
+2. **去重合并**：`UNION` 会自动去除重复的行，如果你想保留重复行，可以使用 `UNION ALL`。
+   ```sql
+   SELECT column1, column2 FROM table1
+   UNION
+   SELECT column1, column2 FROM table2;
+   ```
+
+3. **条件合并**：在每个 `SELECT` 语句中使用不同的条件。
+   ```sql
+   SELECT column1, column2 FROM table1 WHERE condition1
+   UNION
+   SELECT column1, column2 FROM table2 WHERE condition2;
+   ```
+
+4. **合并不同数据类型**：`UNION` 要求两个 `SELECT` 语句的列数和数据类型必须一致，如果需要合并不同数据类型，可以使用 `CAST` 或 `CONVERT` 函数。
+   ```sql
+   SELECT column1, column2 FROM table1
+   UNION
+   SELECT CAST(column3 AS VARCHAR), column4 FROM table2;
+   ```
+
+5. **多个表的合并**：可以使用多个 `UNION` 运算符合并多个表的结果。
+   ```sql
+   SELECT column1, column2 FROM table1
+   UNION
+   SELECT column1, column2 FROM table2
+   UNION
+   SELECT column1, column2 FROM table3;
+   ```
+
+这些是 `UNION` 操作符的一些常见用法，根据具体需求选择适当的方式。
