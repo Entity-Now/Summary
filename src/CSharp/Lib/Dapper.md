@@ -5,7 +5,7 @@ Dapper是一个轻量级的对象关系映射（ORM）库，用于在C#和数据
 ## 常用api
 Dapper提供了一系列常用的API，用于执行SQL查询和映射结果。以下是一些常见的Dapper API：
 
-1. `Query<T>`：执行SQL查询，并将结果映射为IEnumerable<T>。
+1. `Query<T>`：执行SQL查询，并将结果映射为`IEnumerable<T>`。
 ```csharp
 var results = connection.Query<MyClass>("SELECT * FROM MyTable");
 ```
@@ -55,11 +55,11 @@ var result = connection.Query<Person>("SELECT * FROM People WHERE Name = @Name A
 
 ## DynamicParameter
 ```cs
-var parameters = new DynamicParameters();
-parameters.Add("@Name", "John", DbType.String, ParameterDirection.Input);
-parameters.Add("@Age", 25, DbType.Int32, ParameterDirection.Input);
+  var parameters = new DynamicParameters();
+  parameters.Add("@Name", "John", DbType.String, ParameterDirection.Input);
+  parameters.Add("@Age", 25, DbType.Int32, ParameterDirection.Input);
 
-con.Query<T>('select * from xxx where Name=@Name and Age=@Age', parameters);
+  con.Query<T>('select * from xxx where Name=@Name and Age=@Age', parameters);
 ```
 
 ### Add和AddDynamicParams的区别
@@ -70,9 +70,9 @@ con.Query<T>('select * from xxx where Name=@Name and Age=@Age', parameters);
    - 您需要指定参数的名称、值、数据类型和参数方向等信息。
    - 这是一个示例：
      ```csharp
-     var parameters = new DynamicParameters();
-     parameters.Add("@Name", "John", DbType.String, ParameterDirection.Input);
-     parameters.Add("@Age", 25, DbType.Int32, ParameterDirection.Input);
+      var parameters = new DynamicParameters();
+      parameters.Add("@Name", "John", DbType.String, ParameterDirection.Input);
+      parameters.Add("@Age", 25, DbType.Int32, ParameterDirection.Input);
      ```
 
 2. **AddDynamicParams方法：**
@@ -80,9 +80,9 @@ con.Query<T>('select * from xxx where Name=@Name and Age=@Age', parameters);
    - 这在需要动态生成参数集合的情况下很有用。
    - 这是一个示例：
      ```csharp
-     var additionalParameters = new { City = "New York", Country = "USA" };
-     var parameters = new DynamicParameters();
-     parameters.AddDynamicParams(additionalParameters);
+      var additionalParameters = new { City = "New York", Country = "USA" };
+      var parameters = new DynamicParameters();
+      parameters.AddDynamicParams(additionalParameters);
      ```
 
 两者的选择取决于您的需求。如果您已经知道参数的具体信息，使用`Add`方法是直观和明确的。而如果您有一个动态的参数集合，例如从匿名类型中动态获取参数，那么使用`AddDynamicParams`方法更为方便。
