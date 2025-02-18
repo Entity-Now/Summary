@@ -23,7 +23,8 @@ export default navbar([
       "/CSharp",
       "/kotlin",
       "/C++",
-      "/Node.js"
+      "/Node.js",
+      "/python"
     ]
   },
   {

@@ -20,6 +20,13 @@ export default sidebar({
       collapsible: true,
     },
     {
+        text: "python",
+        icon: "laptop-code",
+        prefix: "python/",
+        children: "structure",
+        collapsible: true
+    },
+    {
       text:"git",
       icon: "laptop-code",
       prefix: "git/",
