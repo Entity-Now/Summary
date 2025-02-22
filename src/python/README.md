@@ -58,3 +58,24 @@
     def add(a, b):
         return a + b
     ```
+
+## throw & raise 
+
+> python中抛出异常不用throw，而是使用raise
+
+```py
+raise Exception("error message")
+```
+
+### try & except
+
+```py
+@app.post("/test_4")
+async def test_4():
+    try:
+        print('我是被try包裹的代码.')
+        raise HTTPException("我主动抛出异常了.")
+    except Exception as e:
+        print(e)
+    return 'hello'
+```

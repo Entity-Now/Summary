@@ -139,3 +139,48 @@ make_request('PUT')  # 无效
 
 ```
 
+## Annotated 类型
+
+> Annotated 是 typing 模块中的一个泛型类，可以将附加的元数据与类型一同传递。例如，我们可以使用它来指定一个字段的额外约束、校验规则等。
+
+```py
+from typing import Annotated
+
+# 基本使用 - 添加描述信息
+name: Annotated[str, "User's name"]
+
+# 多个元数据 - 添加最小值和最大值
+age: Annotated[int, "minimum: 18", "maximum: 100"]
+
+# 与 Pydantic 配合使用 - 添加描述性元数据
+from pydantic import BaseModel
+
+class User(BaseModel):
+    age: Annotated[int, "minimum: 18", "maximum: 100"]
+
+# 结合 FastAPI 使用 - 额外元数据作为参数
+from fastapi import FastAPI
+
+app = FastAPI()
+
+class UserModel(BaseModel):
+    name: Annotated[str, "Name of the user", "required"]
+    age: Annotated[int, "Age of the user", "minimum: 18"]
+
+@app.post("/user")
+def create_user(user: UserModel):
+    return {"name": user.name, "age": user.age}
+
+```
+
+### 将一个非对象的参数加入到body中
+
+> 例如，将一个字符串作为参数加入到body中，并且这个字符串是必填的
+
+```py
+from fastapi import FastAPI, Path, Body
+
+@app.post("/test_3")
+async def test_3(item_id: Annotated[str, "required", Body()]):
+    return item_id
+```
