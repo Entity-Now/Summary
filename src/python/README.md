@@ -79,3 +79,27 @@ async def test_4():
         print(e)
     return 'hello'
 ```
+
+### with 
+
+Python 中的 `with` 语句和 C# 中的 `using` 语句在功能上是类似的。它们都是用于管理资源的上下文管理器，确保在代码块结束时释放资源。
+
+在 C# 中，`using` 语句用于管理和释放资源，例如文件流、数据库连接等：
+
+```csharp
+using (var file = new StreamWriter("test.txt"))
+{
+    file.WriteLine("Hello, World!");
+}
+// 这里文件流自动关闭，不需要显式调用 file.Close()
+```
+
+在 Python 中，`with` 语句实现了类似的功能，确保资源在代码块结束时被正确释放：
+
+```python
+with open("test.txt", "w") as file:
+    file.write("Hello, World!")
+# 这里文件流自动关闭，不需要显式调用 file.close()
+```
+
+两者都利用了上下文管理器的概念。在 Python 中，实现上下文管理器需要定义 `__enter__` 和 `__exit__` 方法，而在 C# 中，实现 `IDisposable` 接口并定义 `Dispose` 方法即可。
