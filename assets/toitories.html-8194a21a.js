@@ -1,1 +1,0 @@
-import{_ as e}from"./plugin-vue_export-helper-c27b6911.js";import{o as t,c as o}from"./app-a604e4a9.js";const r={};function c(_,s){return t(),o("div")}const a=e(r,[["render",c],["__file","toitories.html.vue"]]);export{a as default};
