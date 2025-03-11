@@ -89,6 +89,80 @@ person_info(name="Alice", age=25)
 
 ---
 
+## **4. `[:]`数组切片**
+
+在 Python 中，中括号中的冒号（:）用于切片操作。具体来说，dirs[:]表示对列表 dirs 进行切片操作，生成一个新的列表，该列表包含 dirs 中的所有元素。
+
+在 Python 中，切片操作是一种强大的工具，可以用于提取、修改和操作序列（如列表、字符串、元组等）。以下是切片的所有常见用法：
+
+1. **基本切片**：
+
+    ```python
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    subset = numbers[2:7]
+    print(subset)  # 输出: [2, 3, 4, 5, 6]
+    ```
+
+2. **省略开始或结束索引**：
+
+    ```python
+    start_to_five = numbers[:5]
+    print(start_to_five)  # 输出: [0, 1, 2, 3, 4]
+
+    five_to_end = numbers[5:]
+    print(five_to_end)  # 输出: [5, 6, 7, 8, 9]
+    ```
+
+3. **使用负数索引**：
+
+    ```python
+    last_three = numbers[-3:]
+    print(last_three)  # 输出: [7, 8, 9]
+
+    exclude_last_two = numbers[:-2]
+    print(exclude_last_two)  # 输出: [0, 1, 2, 3, 4, 5, 6, 7]
+    ```
+
+4. **步长**：
+
+    ```python
+    every_second = numbers[::2]
+    print(every_second)  # 输出: [0, 2, 4, 6, 8]
+
+    reverse = numbers[::-1]
+    print(reverse)  # 输出: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    ```
+
+5. **修改列表中的元素**：
+
+    ```python
+    numbers[2:5] = [20, 30, 40]
+    print(numbers)  # 输出: [0, 1, 20, 30, 40, 5, 6, 7, 8, 9]
+    ```
+
+6. **删除列表中的元素**：
+
+    ```python
+    numbers[2:5] = []
+    print(numbers)  # 输出: [0, 1, 5, 6, 7, 8, 9]
+    ```
+
+7. **字符串切片**：
+
+    ```python
+    text = "Hello, World!"
+    substring = text[7:12]
+    print(substring)  # 输出: "World"
+    ```
+
+8. **元组切片**：
+
+    ```python
+    tuple_example = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    subset_tuple = tuple_example[2:7]
+    print(subset_tuple)  # 输出: (2, 3, 4, 5, 6)
+    ```
+
 ## **总结**
 
 | 符号  | 作用                 | 典型用途                     |
@@ -96,18 +170,20 @@ person_info(name="Alice", age=25)
 | `...` | 省略号               | 占位符、NumPy 切片、类型注解 |
 | `*`   | 解包、可变参数       | 列表/元组解包、变长参数      |
 | `**`  | 字典解包、关键字参数 | 字典解包、函数关键字参数     |
+| `[:]` | 切片                 | 用于数组切片                 |
 
+## 在 pydantic 中使用省略号
 
-## 在pydantic中使用省略号
-
-在 **Pydantic** 中，`Field(...)` 使用**省略号 `...`（Ellipsis）**，表示**该字段是必填的**，不能省略或为空。  
+在 **Pydantic** 中，`Field(...)` 使用**省略号 `...`（Ellipsis）**，表示**该字段是必填的**，不能省略或为空。
 
 ---
 
 ## **📌 省略号 `...` 在 Pydantic `Field` 中的作用**
-在 Pydantic 的 `Field()` 里，`...` 表示该字段 **没有默认值**，必须由用户提供，否则会报错。  
+
+在 Pydantic 的 `Field()` 里，`...` 表示该字段 **没有默认值**，必须由用户提供，否则会报错。
 
 ### **✅ 示例 1：必填字段**
+
 ```python
 from pydantic import BaseModel, Field
 from typing import List
@@ -117,20 +193,22 @@ class UserModel(BaseModel):
     login_other: List[str] = Field(..., description="第三方登录")  # 必填
 
 # ❌ 省略字段会报错
-UserModel(username="Alice")  
+UserModel(username="Alice")
 # pydantic.error_wrappers.ValidationError: missing field: login_other
 ```
 
 ---
 
 ## **📌 省略号 `...` 与 `None`、默认值的区别**
-| 语法 | 作用 | 是否必填 |
-|------|------|---------|
-| `Field(...)` | **强制必填**（用户必须提供） | ✅ 是 |
-| `Field(None)` | **可选字段，默认值为 `None`** | ❌ 否 |
-| `Field(default_value)` | **有默认值**，如果不传就用默认值 | ❌ 否 |
+
+| 语法                   | 作用                             | 是否必填 |
+| ---------------------- | -------------------------------- | -------- |
+| `Field(...)`           | **强制必填**（用户必须提供）     | ✅ 是    |
+| `Field(None)`          | **可选字段，默认值为 `None`**    | ❌ 否    |
+| `Field(default_value)` | **有默认值**，如果不传就用默认值 | ❌ 否    |
 
 ### **✅ 示例 2：可选 vs 必填**
+
 ```python
 class UserModel(BaseModel):
     required_field: str = Field(..., description="必须填写")
@@ -145,15 +223,18 @@ UserModel()  # ❌ 缺少 required_field，会报错
 ---
 
 ## **📌 为什么要用 `...` 而不是 `None`？**
+
 - `None` 表示 **可选字段**，但 `...` **强制要求用户提供值**。
 - `...` **比 `None` 更加严格**，用于必须提供的字段。
 
 ---
 
 ## **📌 什么时候用 `Field(...)`？**
+
 - **如果一个字段必须由用户提供**，用 `Field(...)`。
 - **如果字段可以为空**，用 `Field(None)` 或 `Optional[...]`。
 
 你这个 `login_other: List[str] = Field(...)`，说明：
+
 - 这个字段**必须提供**，否则 Pydantic 会报错。
 - 你可以在 `description` 里加上**更详细的提示**，方便文档生成。 😊
