@@ -159,33 +159,7 @@ export default sidebar({
   ],
   '/kotlin/':"structure",
   '/CSharp/':"structure",
-  "/other/":[
-      {
-          text:'Seo推广',
-          children:[
-              "seo.md"
-          ]
-      },
-      {
-          text:"面试经验",
-          children:[
-              "SeoOffer.md"
-          ]
-      },
-      {
-          text:'HTML5资源预加载',
-          children:[
-              'html_preload_prefetch.md'
-          ]
-      },
-      {
-          text:"算法/设计模式",
-          children:[
-              'calculation.md',
-              'Design.md'
-          ]
-      }
-  ],
+  "/other/": "structure",
   "/uniApp/":[
       {
           text:'uniApp',

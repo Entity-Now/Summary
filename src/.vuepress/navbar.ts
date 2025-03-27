@@ -33,22 +33,7 @@ export default navbar([
       "/Compilation/README.md"
     ]
   },
-  {
-    text:"其他",
-    children:[
-      "/SQL",
-      "/git",
-      "/docker",
-      "/other/soap_wsdl.md",
-      "/other/soap.md",
-      "/other/wsdl.md",
-      "/markdown/",
-      "/markdown/Markdown-it.md",
-      "/other/calculation.md",
-      "/other/Design.md",
-      "/other/html_preload_prefetch.md"
-    ]
-  },
+  "/other/",
   {
     text:"其他-",
     children:[
