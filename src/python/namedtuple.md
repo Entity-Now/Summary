@@ -1,3 +1,5 @@
+# namedtuple
+
 `namedtuple` 是 Python `collections` 模块中的一个工厂方法，它用于创建**不可变的、可读性强的元组对象**。它类似于 `tuple`，但允许你使用**字段名称**来访问元素，而不是使用索引。
 
 ---
