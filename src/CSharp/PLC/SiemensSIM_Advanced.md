@@ -41,3 +41,33 @@
 ![允许远程的PUT/GET访问](/PLC/plc_network.png)
 5. 关闭DB块的优化设置，否则无法查看地址偏移量
 ![允许远程的PUT/GET访问](/PLC/optimize.png)
+
+## 1. 安装Advanced失败时解决
+
+1. Run CMD as Administrator
+
+2. copy and paste the following command.
+
+cd "C:\Program Files\Common Files\Siemens\PLCSIMADV\Drivers"
+Siemens.Simatic.PlcSim.Advanced.DriverInstaller.exe install
+attachment #12272
+3. Restart the computer after the installation is complete.
+
+I resolved the issue using the above method, but installing it directly from the directory did not work properly.
+
+If an error occurs when running the install command, check the relevant section again.
+
+## 2. 解决方案2
+I found a solution, not entirely fixed but a solution that works.
+
+1. Had to clear the computer cache:
+
+PressWin + Rto open the Run dialog, then typetempand press Enter. Delete all the files in the "Temp" folder.
+PressWin + Ragain, type%temp%,and press Enter. Delete all the files in the "Temp" folder that opens.
+PressWin + R, typeprefetch, and press Enter. Delete all the files in the "Prefetch" folder.
+2. Now you can install any version without error, sadly V5 and up would not start up even after installation without any errors
+
+3. Install V4 and it will work without any problems
+
+This entire problem is something I and a collegue got from the windows 11 pro update 24h2
+So if you have the same problem after installing that update you can try this solution.
