@@ -24,7 +24,7 @@ export default hopeTheme({
   // sidebar
   sidebar,
 
-  footer: "h2966388213@gmail.com",
+  footer: `友情链接 <a href="https://www.moqistar.com">莫欺客鞋帽优选</a>`,
 
   displayFooter: true,
   // 加密的文章
