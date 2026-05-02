@@ -26,8 +26,8 @@ git config --list
 git config --global http.sslVerify "false"
 
 # 设置代理（解决 GitHub 访问慢的问题）
-git config --global https.proxy http://127.0.0.1:7890
-git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7897
+git config --global http.proxy http://127.0.0.1:789y
 
 # 取消代理
 git config --global --unset http.proxy
