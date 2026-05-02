@@ -81,6 +81,13 @@ export default sidebar({
       prefix: "typescript/",
       children: "structure",
       collapsible: true,
+    },
+    {
+      text: "逆向工程",
+      icon: "shield-halved",
+      prefix: "reverse/",
+      children: "structure",
+      collapsible: true,
     }
   ],
   '/js/':"structure",
@@ -107,6 +114,7 @@ export default sidebar({
           text:'git',
           children:[
               '/git/readme.md',
+              '/git/collaboration.md',
               '/git/action.md',
               "tag.md"
           ]
@@ -188,5 +196,6 @@ export default sidebar({
           ]
       }
   ],
+  "/reverse/": "structure",
   "/Math":"structure"
 });

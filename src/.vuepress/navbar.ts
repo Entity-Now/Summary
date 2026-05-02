@@ -38,7 +38,8 @@ export default navbar([
     text:"其他-",
     children:[
       "/other/seo.md",
-      "/other/SeoOffer.md"
+      "/other/SeoOffer.md",
+      "/reverse/"
     ]
   }
 ]);

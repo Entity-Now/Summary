@@ -26,6 +26,9 @@ highlights:
     - icon: /assets/icon/code.svg
       title: 编程小技巧
       details: 记录多种编程语言容易遇到的难点，以便日后忘记方便查找。
+    - icon: /assets/icon/code.svg
+      title: 安卓逆向工程
+      details: 涵盖 ADB、Frida、JADX、Dalvik/Smali 及 JNI 等逆向分析技术。
 
   - header: BeginSeo
     image: /assets/image/SEO.svg
@@ -65,6 +68,7 @@ footer: 使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VueP
   - [x] Node.js 
   - [ ] kotlin(略懂一二)
   - [ ] c++（略懂一二）
+  - [x] 安卓逆向（ADB/Frida/Hook/脱壳）
 
 ## 联系方式
   - 296638823
