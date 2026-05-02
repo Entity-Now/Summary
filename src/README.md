@@ -56,7 +56,7 @@ highlights:
         link: https://github.com/Entity-Now/BeginEdit-mk
 
 copyright: ©2023 Entity-now
-footer: 使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 
+footer: 友情链接 <a href="https://www.moqistar.com">莫欺客鞋帽优选</a>
 ---
 
 ## 掌握的编程语言
@@ -73,3 +73,5 @@ footer: 使用 <a href="https://theme-hope.vuejs.press/zh/" target="_blank">VueP
 ## 联系方式
   - 296638823
   - h2966388213@gmail.com
+
+友情链接 [莫欺客鞋帽优选](https://www.moqistar.com)
